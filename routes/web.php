@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+
+/* registro de usuario nuevo */
+Route::get('/registro/usuario', function () {
+    return view('registro.usuario');
+});
+
+/* SUCURSALES ADMINISTRACION  */
+Route::get('/sucursales/registro', function () {
+    return view('sucursales.registro');
+});
+Route::get('/sucursales', function () {
+    return view('sucursales.listado');
 });
