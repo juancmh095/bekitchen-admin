@@ -44,54 +44,116 @@
             <div id="navbarVerticalMenuPagesMenu">
               <!-- Collapse -->
               <div class="nav-item">
-                <a class="nav-link " href="/administrar" data-placement="left">
+                <a class="nav-link " href="/negocio/perfil" data-placement="left">
                   <i class="bi-house-door nav-icon"></i>
                   <span class="nav-link-title">Administrar</span>
                 </a>
               </div>
               <div class="nav-item">
                 <a class="nav-link dropdown-toggle " href="#sucursales" role="button" data-bs-toggle="collapse" data-bs-target="#sucursales" aria-expanded="false" aria-controls="sucursales">
-                  <i class="bi-people nav-icon"></i>
+                  <i class="bi-shop nav-icon"></i>
                   <span class="nav-link-title">Sucursales</span>
                 </a>
 
                 <div id="sucursales" class="nav-collapse collapse " data-bs-parent="#sucursales">
                   <a class="nav-link " href="/sucursales/registro">Registrar nueva</a>
                   <a class="nav-link " href="/sucursales">Listado</a>
-                  <a class="nav-link " href="./users-add-user.html">Administrar</a>
                 </div>
               </div>
               <!-- End Collapse -->
               <!-- Collapse -->
               <div class="nav-item">
                 <a class="nav-link dropdown-toggle " href="#menu" role="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-expanded="false" aria-controls="menu">
-                  <i class="bi-people nav-icon"></i>
+                  <i class="bi-journal-text nav-icon"></i>
                   <span class="nav-link-title">Menu</span>
                 </a>
 
                 <div id="menu" class="nav-collapse collapse " data-bs-parent="#menu">
                   <a class="nav-link " href="./users.html">Registrar menu</a>
                   <a class="nav-link " href="./users-leaderboard.html">Listado</a>
-                  <a class="nav-link " href="./users-add-user.html">Administrar</a>
                 </div>
               </div>
               <!-- End Collapse -->
               <!-- Collapse -->
               <div class="nav-item">
                 <a class="nav-link dropdown-toggle " href="#productos" role="button" data-bs-toggle="collapse" data-bs-target="#productos" aria-expanded="false" aria-controls="productos">
-                  <i class="bi-people nav-icon"></i>
+                  <i class="bi-box-fill nav-icon"></i>
                   <span class="nav-link-title">Productos</span>
                 </a>
 
                 <div id="productos" class="nav-collapse collapse " data-bs-parent="#productos">
-                  <a class="nav-link " href="./users.html">Registrar nueva</a>
-                  <a class="nav-link " href="./users-leaderboard.html">Listado</a>
-                  <a class="nav-link " href="./users-add-user.html">Administrar</a>
+                  <a class="nav-link " href="/productos/registro">Registrar producto</a>
+                  <a class="nav-link " href="/productos">Listado</a>
+                  <div class="nav-item">
+                    <a class="nav-link dropdown-toggle " href="#combos" role="button" data-bs-toggle="collapse" data-bs-target="#combos" aria-expanded="false" aria-controls="combos">
+                      <i class="bi-box-fill nav-icon"></i>
+                      <span class="nav-link-title">Combos</span>
+                    </a>
+    
+                    <div id="combos" class="nav-collapse collapse " data-bs-parent="#combos">
+                      <a class="nav-link " href="/productos/registro">Registrar</a>
+                      <a class="nav-link " href="/productos">Listado</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <!-- End Collapse -->
 
+            <span class="dropdown-header mt-4">Usuarios</span>
+            <small class="bi-three-dots nav-subtitle-replacer"></small>
+
+            <div id="navbarVerticalMenuPagesMenu">
+              <!-- Collapse -->
+              <div class="nav-item">
+                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                  <i class="bi-person-plus nav-icon"></i>
+                  <span class="nav-link-title">Nuevo Usuario</span>
+                </a>
+              </div>
+
+              <div class="nav-item">
+                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                  <i class="bi-gear-fill nav-icon"></i>
+                  <span class="nav-link-title">Administrar</span>
+                </a>
+              </div>
+            </div>
+            <!-- End Collapse -->
+
+            <span class="dropdown-header mt-4">Configuracion</span>
+            <small class="bi-three-dots nav-subtitle-replacer"></small>
+
+            <div id="navbarVerticalMenuPagesMenu">
+              <!-- Collapse -->
+              <div class="nav-item">
+                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                  <i class="bi-ticket nav-icon"></i>
+                  <span class="nav-link-title">Cupones</span>
+                </a>
+              </div>
+              <div class="nav-item">
+                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                  <i class="bi-person nav-icon"></i>
+                  <span class="nav-link-title">Mi Perfil</span>
+                </a>
+              </div>
+            </div>
+            <!-- End Collapse -->
+
+            <span class="dropdown-header mt-4">Administracion</span>
+            <small class="bi-three-dots nav-subtitle-replacer"></small>
+
+            <div id="navbarVerticalMenuPagesMenu">
+              <!-- Collapse -->
+              <div class="nav-item">
+                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                  <i class="bi-journals nav-icon"></i>
+                  <span class="nav-link-title">Reportes</span>
+                </a>
+              </div>
+            </div>
+            <!-- End Collapse -->
             
           </div>
 
@@ -167,34 +229,18 @@
               <!-- Language -->
               <div class="dropdown dropup">
                 <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectLanguageDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
-                  <img class="avatar avatar-xss avatar-circle" src="./assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="United States Flag">
+                  <img class="avatar avatar-xss avatar-circle" src="{{asset('static/vendor/flag-icon-css/flags/1x1/mx.svg')}}" alt="United States Flag">
                 </button>
 
                 <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectLanguageDropdown">
                   <span class="dropdown-header">Select language</span>
                   <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="./assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="Flag">
-                    <span class="text-truncate" title="English">English (US)</span>
+                    <img class="avatar avatar-xss avatar-circle me-2" src="{{asset('static/vendor/flag-icon-css/flags/1x1/us.svg')}}" alt="Flag">
+                    <span class="text-truncate" title="English">English</span>
                   </a>
                   <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="./assets/vendor/flag-icon-css/flags/1x1/gb.svg" alt="Flag">
-                    <span class="text-truncate" title="English">English (UK)</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="./assets/vendor/flag-icon-css/flags/1x1/de.svg" alt="Flag">
-                    <span class="text-truncate" title="Deutsch">Deutsch</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="./assets/vendor/flag-icon-css/flags/1x1/dk.svg" alt="Flag">
-                    <span class="text-truncate" title="Dansk">Dansk</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="./assets/vendor/flag-icon-css/flags/1x1/it.svg" alt="Flag">
-                    <span class="text-truncate" title="Italiano">Italiano</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="./assets/vendor/flag-icon-css/flags/1x1/cn.svg" alt="Flag">
-                    <span class="text-truncate" title="中文 (繁體)">中文 (繁體)</span>
+                    <img class="avatar avatar-xss avatar-circle me-2" src="{{asset('static/vendor/flag-icon-css/flags/1x1/mx.svg')}}" alt="Flag">
+                    <span class="text-truncate" title="Español">Español</span>
                   </a>
                 </div>
               </div>

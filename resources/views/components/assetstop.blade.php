@@ -28,7 +28,10 @@
  <script src="{{asset('static/vendor/imask/dist/imask.min.js')}}"></script>
  <script src="{{asset('static/vendor/tom-select/dist/js/tom-select.complete.min.js')}}"></script>
  <script src="{{asset('static/vendor/quill/dist/quill.min.js')}}"></script>
-
+ <script src="{{asset('static/vendor/hs-sticky-block/dist/hs-sticky-block.min.js')}}"></script>
+ <script src="{{asset('static/vendor/hs-scrollspy/dist/hs-scrollspy.min.js')}}"></script>
+ <script src="{{asset('static/vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
+ <script src="{{asset('static/vendor/hs-quantity-counter/dist/hs-quantity-counter.min.js')}}"></script>
 
 <!-- JS Plugins Init. -->
 <script>
@@ -139,9 +142,40 @@
         // =======================================================
         new HSFileAttach('.js-file-attach')
 
+         // INITIALIZATION OF STICKY BLOCKS
+        // =======================================================
+        new HSStickyBlock('.js-sticky-block', {
+          targetSelector: document.getElementById('header').classList.contains('navbar-fixed') ? '#header' : null
+        })
+
+        // INITIALIZATION OF  QUANTITY COUNTER
+        // =======================================================
+        new HSQuantityCounter('.js-quantity-counter')
+
         // INITIALIZATION OF QUILLJS EDITOR
         // =======================================================
         HSCore.components.HSQuill.init('.js-quill')
+
+        // INITIALIZATION OF SELECT
+        // =======================================================
+        HSCore.components.HSTomSelect.init('.js-select')
+
+        // INITIALIZATION OF DROPZONE
+        // =======================================================
+        HSCore.components.HSDropzone.init('.js-dropzone')
+
+        // SCROLLSPY
+        // =======================================================
+        new bootstrap.ScrollSpy(document.body, {
+          target: '#navbarSettings',
+          offset: 100
+        })
+
+        new HSScrollspy('#navbarVerticalNavMenu', {
+          breakpoint: 'lg',
+          scrollOffset: -20
+        })
+
 
         // INITIALIZATION OF STEP FORM
         // =======================================================

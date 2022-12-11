@@ -211,6 +211,28 @@
                       <!-- End Form -->
                     </div>
                     <!-- End Col -->
+                    <div class="col-lg-6">
+                      <!-- Form -->
+                      <div class="mb-4">
+                        <label for="correo" class="form-label me-2">Menu</label>
+    
+                        <!-- Form -->
+                        <div class="mb-4">
+                            <div class="input-group input-group-merge">
+                            <div class="input-group-prepend input-group-text">
+                                <i class="bi-list"></i>
+                            </div>
+                            <select name="menu" id="menu" class="form-control">
+                              <option>Menu 1</option>
+                              <option>Menu 2</option>
+                            </select>
+                            </div>
+                        </div>
+                      <!-- End Form -->
+                      </div>
+                      <!-- End Form -->
+                    </div>
+                    <!-- End Col -->
                   </div>
                   <!-- End Form Row -->
     

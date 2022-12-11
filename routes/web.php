@@ -23,10 +23,22 @@ Route::get('/registro/usuario', function () {
     return view('registro.usuario');
 });
 
-/* SUCURSALES ADMINISTRACION  */
+/* NEGOCIO ADMINISTRACION  */
+/* SUCURSALES */
 Route::get('/sucursales/registro', function () {
     return view('sucursales.registro');
 });
 Route::get('/sucursales', function () {
     return view('sucursales.listado');
+});
+/* NEGOCIO */
+Route::get('/negocio/perfil', function () {
+    return view('negocio.perfil');
+});
+/* PRODUCTOS */
+Route::get('/productos', function () {
+    return view('productos.productos');
+});
+Route::get('/productos/registro', function () {
+    return view('productos.registro');
 });
