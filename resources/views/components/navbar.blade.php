@@ -106,14 +106,14 @@
             <div id="navbarVerticalMenuPagesMenu">
               <!-- Collapse -->
               <div class="nav-item">
-                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                <a class="nav-link " href="/usuarios/registro" data-placement="left">
                   <i class="bi-person-plus nav-icon"></i>
                   <span class="nav-link-title">Nuevo Usuario</span>
                 </a>
               </div>
 
               <div class="nav-item">
-                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                <a class="nav-link " href="/usuarios" data-placement="left">
                   <i class="bi-gear-fill nav-icon"></i>
                   <span class="nav-link-title">Administrar</span>
                 </a>

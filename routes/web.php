@@ -42,3 +42,14 @@ Route::get('/productos', function () {
 Route::get('/productos/registro', function () {
     return view('productos.registro');
 });
+/* USUARIOS */
+Route::get('/usuarios/registro', function () {
+    return view('usuarios.registro');
+});
+Route::get('/usuarios', function () {
+    return view('usuarios.listado');
+});
+/* CUPONES */
+Route::get('/cupones/registro', function () {
+    return view('cupones.registro');
+});
