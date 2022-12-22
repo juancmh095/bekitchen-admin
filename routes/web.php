@@ -53,3 +53,21 @@ Route::get('/usuarios', function () {
 Route::get('/cupones/registro', function () {
     return view('cupones.registro');
 });
+/* MENUS */
+Route::get('/menus', function () {
+    return view('menus.menus');
+});
+Route::get('/menus/registro', function () {
+    return view('menus.registro');
+});
+/* COMBOS */
+Route::get('/combos', function () {
+    return view('combos.combos');
+});
+Route::get('/combos/registro', function () {
+    return view('combos.registro');
+});
+/* CUPONES */
+Route::get('/cuponera', function () {
+    return view('cupones.registro');
+});

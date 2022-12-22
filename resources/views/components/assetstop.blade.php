@@ -120,18 +120,65 @@
 
       // INITIALIZATION OF FORM SEARCH
       // =======================================================
-      const HSFormSearchInstance = new HSFormSearch('.js-form-search')
-      HSFormSearchInstance.getItem(1).on('close', function (el) {
-        el.classList.remove('top-0')
-      })
+      
+      const HSFormSearchInstance = new HSFormSearch('.js-form-search');
+      console.log(HSFormSearchInstance.collection);
+      if(HSFormSearchInstance.collection.length > 0){
+        HSFormSearchInstance.getItem(1).on('close', function (el) {
+          el.classList.remove('top-0')
+        });
+      }
 
-      document.querySelector('.js-form-search-mobile-toggle').addEventListener('click', e => {
-        let dataOptions = JSON.parse(e.currentTarget.getAttribute('data-hs-form-search-options')),
-          $menu = document.querySelector(dataOptions.dropMenuElement)
+      console.log(document.querySelector('.js-form-search-mobile-toggle'));
+      if(document.querySelector('.js-form-search-mobile-toggle')){
+        document.querySelector('.js-form-search-mobile-toggle').addEventListener('click', e => {
+          let dataOptions = JSON.parse(e.currentTarget.getAttribute('data-hs-form-search-options')),
+            $menu = document.querySelector(dataOptions.dropMenuElement)
+  
+          $menu.classList.add('top-0')
+          $menu.style.left = 0
+        })
+      }
 
-        $menu.classList.add('top-0')
-        $menu.style.left = 0
-      })
+
+      console.log('entra aqui');
+        // INITIALIZATION OF STEP FORM
+        // =======================================================
+        new HSStepForm('.js-step-form', {
+          finish: () => {
+            document.getElementById("addUserStepFormProgress").style.display = 'none'
+            document.getElementById("addUserStepProfile").style.display = 'none'
+            document.getElementById("addUserStepBillingAddress").style.display = 'none'
+            document.getElementById("addUserStepConfirmation").style.display = 'none'
+            document.getElementById("successMessageContent").style.display = 'block'
+            scrollToTop('#header');
+            const formContainer = document.getElementById('formContainer')
+          },
+          onNextStep: function () {
+            scrollToTop()
+          },
+          onPrevStep: function () {
+            scrollToTop()
+          }
+        })
+
+        function scrollToTop(el = '.js-step-form') {
+          el = document.querySelector(el)
+          window.scrollTo({
+            top: (el.getBoundingClientRect().top + window.scrollY) - 30,
+            left: 0,
+            behavior: 'smooth'
+          })
+        }
+
+        // INITIALIZATION OF ADD FIELD
+        // =======================================================
+        new HSAddField('.js-add-field', {
+          addedField: field => {
+            HSCore.components.HSTomSelect.init(field.querySelector('.js-select-dynamic'))
+            HSCore.components.HSMask.init(field.querySelector('.js-input-mask'))
+          }
+        })
 
 
       // INITIALIZATION OF BOOTSTRAP DROPDOWN
@@ -176,44 +223,6 @@
           scrollOffset: -20
         })
 
-
-        // INITIALIZATION OF STEP FORM
-        // =======================================================
-        new HSStepForm('.js-step-form', {
-          finish: () => {
-            document.getElementById("addUserStepFormProgress").style.display = 'none'
-            document.getElementById("addUserStepProfile").style.display = 'none'
-            document.getElementById("addUserStepBillingAddress").style.display = 'none'
-            document.getElementById("addUserStepConfirmation").style.display = 'none'
-            document.getElementById("successMessageContent").style.display = 'block'
-            scrollToTop('#header');
-            const formContainer = document.getElementById('formContainer')
-          },
-          onNextStep: function () {
-            scrollToTop()
-          },
-          onPrevStep: function () {
-            scrollToTop()
-          }
-        })
-
-        function scrollToTop(el = '.js-step-form') {
-          el = document.querySelector(el)
-          window.scrollTo({
-            top: (el.getBoundingClientRect().top + window.scrollY) - 30,
-            left: 0,
-            behavior: 'smooth'
-          })
-        }
-
-        // INITIALIZATION OF ADD FIELD
-        // =======================================================
-        new HSAddField('.js-add-field', {
-          addedField: field => {
-            HSCore.components.HSTomSelect.init(field.querySelector('.js-select-dynamic'))
-            HSCore.components.HSMask.init(field.querySelector('.js-input-mask'))
-          }
-        })
 
 
       // INITIALIZATION OF CHARTJS

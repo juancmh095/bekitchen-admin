@@ -69,8 +69,8 @@
                 </a>
 
                 <div id="menu" class="nav-collapse collapse " data-bs-parent="#menu">
-                  <a class="nav-link " href="./users.html">Registrar menu</a>
-                  <a class="nav-link " href="./users-leaderboard.html">Listado</a>
+                  <a class="nav-link " href="/menus/registro">Registrar menu</a>
+                  <a class="nav-link " href="/menus">Listado</a>
                 </div>
               </div>
               <!-- End Collapse -->
@@ -91,8 +91,8 @@
                     </a>
     
                     <div id="combos" class="nav-collapse collapse " data-bs-parent="#combos">
-                      <a class="nav-link " href="/productos/registro">Registrar</a>
-                      <a class="nav-link " href="/productos">Listado</a>
+                      <a class="nav-link " href="/combos/registro">Registrar</a>
+                      <a class="nav-link " href="/combos">Listado</a>
                     </div>
                   </div>
                 </div>
@@ -127,7 +127,7 @@
             <div id="navbarVerticalMenuPagesMenu">
               <!-- Collapse -->
               <div class="nav-item">
-                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                <a class="nav-link " href="/cuponera" data-placement="left">
                   <i class="bi-ticket nav-icon"></i>
                   <span class="nav-link-title">Cupones</span>
                 </a>
