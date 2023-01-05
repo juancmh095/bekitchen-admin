@@ -31,6 +31,8 @@
         </div>
         <!-- End Page Header -->
   
+        <form action="{{route('registroProducto')}}" method="POST" enctype="multipart/form-data">
+          @csrf
         <div class="row">
           <div class="col-lg-8 mb-3 mb-lg-0">
             <!-- Card -->
@@ -74,7 +76,7 @@
                         <div class="input-group-append">
                           <!-- Select -->
                           <div class="tom-select-custom tom-select-custom-end">
-                            <select class="js-select form-select" autocomplete="off" data-hs-tom-select-options='{
+                            <select class="js-select form-select" name="unidadm" autocomplete="off" data-hs-tom-select-options='{
                                       "searchInDropdown": false,
                                       "hideSearch": true,
                                       "dropdownWidth": "6rem"
@@ -88,8 +90,6 @@
                           <!-- End Select -->
                         </div>
                       </div>
-  
-                      <small class="form-text">Used to calculate shipping rates at checkout and label prices during fulfillment.</small>
                     </div>
                     <!-- End Form -->
                   </div>
@@ -101,15 +101,7 @@
   
                 <!-- Quill -->
                 <div class="quill-custom">
-                  <div class="js-quill" style="height: 15rem;" data-hs-quill-options='{
-                       "placeholder": "Type your description...",
-                        "modules": {
-                          "toolbar": [
-                            ["bold", "italic", "underline", "strike", "link", "image", "blockquote", "code", {"list": "bullet"}]
-                          ]
-                        }
-                       }'>
-                  </div>
+                  <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
                 </div>
                 <!-- End Quill -->
               </div>
@@ -150,11 +142,11 @@
                     <img class="avatar avatar-xl avatar-4x3 mb-3" src="{{asset('static/svg/illustrations/oc-browse.svg')}}" alt="Image Description" data-hs-theme-appearance="default">
                     <img class="avatar avatar-xl avatar-4x3 mb-3" src="{{asset('static/svg/illustrations/oc-browse.svg')}}" alt="Image Description" data-hs-theme-appearance="dark">
   
-                    <h5>Drag and drop your file here</h5>
+                    <h5>Arraste sus archivos aqui</h5>
   
-                    <p class="mb-2">or</p>
+                    <p class="mb-2">o</p>
   
-                    <span class="btn btn-white btn-sm">Browse files</span>
+                    <span class="btn btn-white btn-sm">Buscar archivos</span>
                   </div>
                 </div>
                 <!-- End Dropzone -->
@@ -310,7 +302,7 @@
   
                   <!-- Select -->
                   <div class="tom-select-custom">
-                    <select class="js-select form-select" autocomplete="off" id="categoryLabel" data-hs-tom-select-options='{
+                    <select class="js-select form-select" autocomplete="off" name="categoria" id="categoryLabel" data-hs-tom-select-options='{
                               "searchInDropdown": false,
                               "hideSearch": true,
                               "placeholder": "Select category"
@@ -327,7 +319,7 @@
   
                 <label for="tagsLabel" class="form-label">Etiquetas</label>
   
-                <input type="text" class="form-control" id="tagsLabel" placeholder="Enter tags here" aria-label="Enter tags here">
+                <input type="text" class="form-control" name="tagsLabel" id="tagsLabel" placeholder="Enter tags here" aria-label="Enter tags here">
               </div>
               <!-- Body -->
             </div>
@@ -349,8 +341,8 @@
   
                 <div class="col-auto">
                   <div class="d-flex gap-3">
-                    <button type="button" class="btn btn-ghost-light">Discard</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-ghost-light">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                   </div>
                 </div>
                 <!-- End Col -->
@@ -360,6 +352,7 @@
           </div>
           <!-- End Card -->
         </div>
+        </form>
       </div>
       <!-- End Content -->
 

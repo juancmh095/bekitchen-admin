@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('combos_productos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_combo');
+            $table->integer('id_producto');
+            $table->integer('precio');
             $table->timestamps();
         });
     }

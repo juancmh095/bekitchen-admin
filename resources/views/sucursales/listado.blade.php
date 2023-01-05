@@ -17,7 +17,7 @@
           <div class="page-header">
             <div class="row align-items-center mb-3">
               <div class="col-md mb-2 mb-md-0">
-                <h1 class="page-header-title">Sucursales <span class="badge bg-soft-dark text-dark ms-2">97,524</span></h1>
+                <h1 class="page-header-title">Sucursales <span class="badge bg-soft-dark text-dark ms-2">{{count($sucursales)}}</span></h1>
     
                 <div class="d-sm-flex mt-2">
                   <a class="d-inline-block text-body mb-2 mb-sm-0 me-3" href="javascript:;" data-bs-toggle="modal" data-bs-target="#exportCustomersModal">
@@ -267,6 +267,7 @@
                 </thead>
     
                 <tbody>
+                  @foreach($sucursales as $sucursal)
                   <tr>
                     <td class="table-column-pe-0">
                       <div class="form-check">
@@ -275,30 +276,31 @@
                       </div>
                     </td>
                     <td class="table-column-ps-0">
-                      <a class="d-flex align-items-center" href="./ecommerce-customer-details.html">
+                      <a class="d-flex align-items-center" href="/sucursales/registro">
                         <div class="flex-shrink-0">
                           <div class="avatar avatar-circle">
-                            <img class="avatar-img" src="{{('static/img/160x160/img10.jpg')}}" alt="Image Description">
+                            <img class="avatar-img" src="{{asset('static/img/tienda.jpg')}}" alt="Image Description">
                           </div>
                         </div>
                         <div class="flex-grow-1 ms-3">
-                          <span class="h5 text-inherit">Tienda ! <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                          <span class="h5 text-inherit">{{$sucursal->nombre}} <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
                         </div>
                       </a>
                     </td>
-                    <td>amanda@site.com</td>
-                    <td>+1-202-555-0140</td>
-                    <td>United Kingdom</td>
+                    <td>{{$sucursal->correo}}</td>
+                    <td>{{$sucursal->telefono}}</td>
+                    <td>{{$sucursal->direccion}}</td>
                     <td>
-                      <span class="legend-indicator bg-success"></span>Active
+                      <span class="legend-indicator bg-success"></span>Activo
                     </td>
                     <td>
-                        <span class="legend-indicator bg-success"></span>Active
+                        <span class="legend-indicator bg-success"></span>{{$sucursal->delivery}}
                     </td>
                     <td>
-                        <span class="legend-indicator bg-success"></span>Active
+                        <span class="legend-indicator bg-success"></span>{{$sucursal->tienda}}
                     </td>
                   </tr>    
+                  @endforeach
                   
                 </tbody>
               </table>

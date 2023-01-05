@@ -59,216 +59,212 @@
             <!-- End Nav -->
           </div>
           <!-- End Page Header -->
-    
-          <div class="row justify-content-lg-center">
-            <div class="col-lg-9">
-              <!-- Card -->
-              <div class="card card-lg mb-3 mb-lg-5">
-                <!-- Header -->
-                <div class="card-header">
-                  <h4 class="card-header-title">Detalles</h4>
-                </div>
-                <!-- End Header -->
-    
-                <!-- Body -->
-                <div class="card-body">
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label class="form-label">Logo</label>
-    
-                    <div class="d-flex align-items-center">
-                      <!-- Avatar -->
-                      <label class="avatar avatar-xl avatar-circle avatar-uploader me-5" for="avatarUploader">
-                        <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('static/svg/brands/guideline-icon.svg')}}" alt="Image Description">
-    
-                        <input type="file" class="js-file-attach avatar-uploader-input" id="avatarUploader" data-hs-file-attach-options='{
-                                  "textTarget": "#avatarProjectSettingsImg",
-                                  "mode": "image",
-                                  "targetAttr": "src",
-                                  "resetTarget": ".js-file-attach-reset-img",
-                                  "resetImg": "./assets/img/160x160/img2.jpg",
-                                  "allowTypes": [".png", ".jpeg", ".jpg"]
-                               }'>
-    
-                        <span class="avatar-uploader-trigger">
-                          <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
-                        </span>
-                      </label>
-                      <!-- End Avatar -->
-    
-                      <button type="button" class="js-file-attach-reset-img btn btn-white">Delete</button>
-                    </div>
+          <form action="{{route('registroSucursal')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="row justify-content-lg-center">
+              <div class="col-lg-9">
+                <!-- Card -->
+                <div class="card card-lg mb-3 mb-lg-5">
+                  <!-- Header -->
+                  <div class="card-header">
+                    <h4 class="card-header-title">Detalles</h4>
                   </div>
-                  <!-- End Form -->
-    
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Nombre de la sucursal <i class="bi-question-circle text-body ms-1" data-bs-oggle="tooltip" data-bs-placement="top" title="Displayed on public forums, such as Front."></i></label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-briefcase"></i>
+                  <!-- End Header -->
+      
+                  <!-- Body -->
+                  <div class="card-body">
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label class="form-label">Logo</label>
+      
+                      <div class="d-flex align-items-center">
+                        <!-- Avatar -->
+                        <label class="avatar avatar-xl avatar-circle avatar-uploader me-5" for="avatarUploader">
+                          <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('static/svg/brands/guideline-icon.svg')}}" alt="Image Description">
+      
+                          <input type="file" name="foto" class="js-file-attach avatar-uploader-input" id="avatarUploader" data-hs-file-attach-options='{
+                                    "textTarget": "#avatarProjectSettingsImg",
+                                    "mode": "image",
+                                    "targetAttr": "src",
+                                    
+                                    "resetTarget": ".js-file-attach-reset-img",
+                                    "resetImg": "./assets/img/160x160/img2.jpg",
+                                    "allowTypes": [".png", ".jpeg", ".jpg"]
+                                 }'>
+      
+                          <span class="avatar-uploader-trigger">
+                            <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
+                          </span>
+                        </label>
+                        <!-- End Avatar -->
+      
+                        <button type="button" class="js-file-attach-reset-img btn btn-white">Eliminar</button>
                       </div>
-                      <input type="text" class="form-control" name="projectName" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                     </div>
-                  </div>
-                  <!-- End Form -->
-    
-                  <!-- Quill -->
-                  <label class="form-label">Descripcion <span class="form-label-secondary">(Opcional)</span></label>
-    
-                  <!-- Quill -->
-                  <div class="quill-custom">
-                    <div class="js-quill" style="height: 15rem;" data-hs-quill-options='{
-                         "placeholder": "...",
-                          "modules": {
-                            "toolbar": [
-                              ["bold", "italic", "underline", "strike", "link", "image", "blockquote", "code", {"list": "bullet"}]
-                            ]
-                          }
-                         }'>
+                    <!-- End Form -->
+      
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Nombre de la sucursal <i class="bi-question-circle text-body ms-1" data-bs-oggle="tooltip" data-bs-placement="top" title="Displayed on public forums, such as Front."></i></label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-briefcase"></i>
+                        </div>
+                        <input type="text" class="form-control" name="nombre" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
+                      </div>
                     </div>
+                    <!-- End Form -->
+      
+                    <!-- Quill -->
+                    <label class="form-label">Descripcion <span class="form-label-secondary">(Opcional)</span></label>
+      
+                    <!-- Quill -->
+                    <div class="quill-custom">
+                      <textarea name="descripcion" id="" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <!-- End Quill -->
                   </div>
-                  <!-- End Quill -->
+                  <!-- End Body -->
+      
+                  <!-- Footer -->
+                  <div class="card-footer d-flex justify-content-end align-items-center gap-3">
+                    <button type="button" class="btn btn-white">Cancelar</button>
+                  </div>
+                  <!-- End Footer -->
                 </div>
-                <!-- End Body -->
-    
-                <!-- Footer -->
-                <div class="card-footer d-flex justify-content-end align-items-center gap-3">
-                  <button type="button" class="btn btn-white">Cancelar</button>
-                </div>
-                <!-- End Footer -->
-              </div>
-              <!-- End Card -->
-    
-              <!-- Card -->
-              <div class="card card-lg">
-                <!-- Header -->
-                <div class="card-header">
-                  <h4 class="card-header-title">Direccion y contacto</h4>
-                </div>
-                <!-- End Header -->
-    
-                <!-- Body -->
-                <div class="card-body">
-                  <div class="row">
-    
-                    <div class="col-sm-12">
-                      <label for="direccion" class="form-label">Dirección</label>
-    
-                      <!-- Form -->
-                      <div class="mb-4">
-                        <div class="input-group input-group-merge">
-                          <div class="input-group-prepend input-group-text">
-                            <i class="bi-globe"></i>
+                <!-- End Card -->
+      
+                <!-- Card -->
+                <div class="card card-lg">
+                  <!-- Header -->
+                  <div class="card-header">
+                    <h4 class="card-header-title">Direccion y contacto</h4>
+                  </div>
+                  <!-- End Header -->
+      
+                  <!-- Body -->
+                  <div class="card-body">
+                    <div class="row">
+      
+                      <div class="col-sm-12">
+                        <label for="direccion" class="form-label">Dirección</label>
+      
+                        <!-- Form -->
+                        <div class="mb-4">
+                          <div class="input-group input-group-merge">
+                            <div class="input-group-prepend input-group-text">
+                              <i class="bi-globe"></i>
+                            </div>
+                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Buscar Dirección" aria-label="Enter value here">
                           </div>
-                          <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Buscar Dirección" aria-label="Enter value here">
                         </div>
+                        <!-- End Form -->
                       </div>
-                      <!-- End Form -->
+                      <!-- End Col -->
                     </div>
-                    <!-- End Col -->
-                  </div>
-                  <!-- End Form Row -->
-    
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <!-- Form -->
-                      <div class="mb-4">
-                        <label for="telefono" class="form-label">Telefono</label>
-    
+                    <!-- End Form Row -->
+      
+                    <div class="row">
+                      <div class="col-lg-6">
                         <!-- Form -->
                         <div class="mb-4">
-                            <div class="input-group input-group-merge">
-                            <div class="input-group-prepend input-group-text">
-                                <i class="bi-phone"></i>
-                            </div>
-                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="+52" aria-label="Enter value here">
-                            </div>
+                          <label for="telefono" class="form-label">Telefono</label>
+      
+                          <!-- Form -->
+                          <div class="mb-4">
+                              <div class="input-group input-group-merge">
+                              <div class="input-group-prepend input-group-text">
+                                  <i class="bi-phone"></i>
+                              </div>
+                              <input type="text" class="form-control" name="telefono" id="telefono" placeholder="+52" aria-label="Enter value here">
+                              </div>
+                          </div>
+                        <!-- End Form -->
                         </div>
-                      <!-- End Form -->
+                        <!-- End Form -->
                       </div>
-                      <!-- End Form -->
-                    </div>
-                    <!-- End Col -->
-    
-                    <div class="col-lg-6">
-                      <!-- Form -->
-                      <div class="mb-4">
-                        <label for="correo" class="form-label me-2">Correo</label>
-    
+                      <!-- End Col -->
+      
+                      <div class="col-lg-6">
                         <!-- Form -->
                         <div class="mb-4">
-                            <div class="input-group input-group-merge">
-                            <div class="input-group-prepend input-group-text">
-                                <i class="bi-envelope"></i>
-                            </div>
-                            <input type="email" class="form-control" name="correo" id="correo" placeholder="@" aria-label="Enter value here">
-                            </div>
+                          <label for="correo" class="form-label me-2">Correo</label>
+      
+                          <!-- Form -->
+                          <div class="mb-4">
+                              <div class="input-group input-group-merge">
+                              <div class="input-group-prepend input-group-text">
+                                  <i class="bi-envelope"></i>
+                              </div>
+                              <input type="email" class="form-control" name="correo" id="correo" placeholder="@" aria-label="Enter value here">
+                              </div>
+                          </div>
+                        <!-- End Form -->
                         </div>
-                      <!-- End Form -->
+                        <!-- End Form -->
                       </div>
-                      <!-- End Form -->
-                    </div>
-                    <!-- End Col -->
-                    <div class="col-lg-6">
-                      <!-- Form -->
-                      <div class="mb-4">
-                        <label for="correo" class="form-label me-2">Menu</label>
-    
+                      <!-- End Col -->
+                      <div class="col-lg-6">
                         <!-- Form -->
                         <div class="mb-4">
-                            <div class="input-group input-group-merge">
-                            <div class="input-group-prepend input-group-text">
-                                <i class="bi-list"></i>
-                            </div>
-                            <select name="menu" id="menu" class="form-control">
-                              <option>Menu 1</option>
-                              <option>Menu 2</option>
-                            </select>
-                            </div>
+                          <label for="correo" class="form-label me-2">Menu</label>
+      
+                          <!-- Form -->
+                          <div class="mb-4">
+                              <div class="input-group input-group-merge">
+                              <div class="input-group-prepend input-group-text">
+                                  <i class="bi-list"></i>
+                              </div>
+                              <select name="menu" id="menu" class="form-control">
+                                @foreach($menus as $menu)
+                                <option value="{{$menu->id}}">{{$menu->nombre}}</option>
+                                @endforeach
+                              </select>
+                              </div>
+                          </div>
+                        <!-- End Form -->
                         </div>
-                      <!-- End Form -->
+                        <!-- End Form -->
                       </div>
-                      <!-- End Form -->
+                      <!-- End Col -->
                     </div>
-                    <!-- End Col -->
+                    <!-- End Form Row -->
+      
+                    <div class="d-grid gap-2">
+                      <!-- Check -->
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="tienda" id="tienda">
+                        <label class="form-check-label" for="tienda">
+                          Recoger en tienda
+                        </label>
+                      </div>
+                      <!-- End Check -->
+      
+                      <!-- Check -->
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="delivery" id="delivery">
+                        <label class="form-check-label" for="delivery">
+                          Delivery
+                        </label>
+                      </div>
+                      <!-- End Check -->
+                    </div>
                   </div>
-                  <!-- End Form Row -->
-    
-                  <div class="d-grid gap-2">
-                    <!-- Check -->
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="tienda" checked>
-                      <label class="form-check-label" for="tienda">
-                        Recoger en tienda
-                      </label>
-                    </div>
-                    <!-- End Check -->
-    
-                    <!-- Check -->
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="delivery" checked>
-                      <label class="form-check-label" for="delivery">
-                        Delivery
-                      </label>
-                    </div>
-                    <!-- End Check -->
+                  <!-- End Body -->
+      
+                  <!-- Footer -->
+                  <div class="card-footer d-flex justify-content-end gap-3">
+                    <button type="reset" class="btn btn-white">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                   </div>
+                  <!-- End Footer -->
                 </div>
-                <!-- End Body -->
-    
-                <!-- Footer -->
-                <div class="card-footer d-flex justify-content-end gap-3">
-                  <button type="button" class="btn btn-white">Cancel</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-                <!-- End Footer -->
+                <!-- End Card -->
               </div>
-              <!-- End Card -->
+              <!-- End Col -->
             </div>
-            <!-- End Col -->
-          </div>
+          </form>
           <!-- End Row -->
         </div>
         <!-- End Content -->

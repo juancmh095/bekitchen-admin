@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('combos', function (Blueprint $table) {
             $table->id();
+            $table->string("nombre");
+            $table->string("banner");
+            $table->integer("precio_total");
+            $table->date("fecha_exp");
             $table->timestamps();
         });
     }

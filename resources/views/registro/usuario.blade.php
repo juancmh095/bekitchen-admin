@@ -12,9 +12,10 @@
             <form class="js-step-form py-md-5" id="form-add-user" data-hs-step-form-options='{
                     "progressSelector": "#addUserStepFormProgress",
                     "stepsSelector": "#addUserStepFormContent",
-                    "endSelector": "#addUserFinishBtn",
+                    "endSelector": "#addUserFinishBtn2",
                     "isValidate": false
-                  }'>
+                  }' enctype="multipart/form-data" action="{{route('registroNegocio')}}"  method="POST">
+                  @csrf
               <div class="row justify-content-lg-center">
                 <div class="col-lg-8">
                   <!-- Step -->
@@ -98,7 +99,8 @@
                           <div class="col-sm-9">
                             <div class="input-group input-group-sm-vertical">
                               <input type="text" class="form-control" name="nombre" id="firstNameLabel" placeholder="Juan" aria-label="Clarice">
-                              <input type="text" class="form-control" name="apellidos" id="lastNameLabel" placeholder="Perez..." aria-label="Boone">
+                              <input type="text" class="form-control" name="apellidop" id="lastNameLabel" placeholder="Perez..." aria-label="Boone">
+                              <input type="text" class="form-control" name="apellidom" id="lastNameLabel" placeholder="Perez..." aria-label="Boone">
                             </div>
                           </div>
                         </div>
@@ -157,7 +159,7 @@
                         <!-- Add Phone Input Field -->
                         <div id="addAddressFieldTemplate" style="display: none;">
                           <div class="input-group-add-field">
-                            <input type="text" class="form-control" data-name="addressLine" placeholder="Your address" aria-label="Your address">
+                            <input type="text" class="form-control" name="direccion" placeholder="Your address" aria-label="Your address">
       
                             <a class="js-delete-field input-group-add-field-delete" href="javascript:;">
                               <i class="bi-x-lg"></i>
@@ -367,7 +369,7 @@
                           <dd class="col-sm-6" id="nombre"></dd>
 
                           <dt class="col-sm-6 text-sm-end">Apellidos</dt>
-                          <dd class="col-sm-6" id="apellidos"></dd>
+                          <dd class="col-sm-6" id="apellidop"></dd>
       
                           <dt class="col-sm-6 text-sm-end">Email:</dt>
                           <dd class="col-sm-6" id="email"></dd>
@@ -399,7 +401,7 @@
                           <dt class="col-sm-6 text-sm-end">Entre Calles</dt>
                           <dd class="col-sm-6" id="entrecalles"></dd>
       
-                          <dt class="col-sm-6 text-sm-end">Codifo postal</dt>
+                          <dt class="col-sm-6 text-sm-end">Codigo postal</dt>
                           <dd class="col-sm-6" id="cp"></dd>
                         </dl>
                         <!-- End Row -->
@@ -416,7 +418,7 @@
       
                         <div class="ms-auto">
                           <button type="button" class="btn btn-white me-2">Cancelar</button>
-                          <button id="addUserFinishBtn" type="button" class="btn btn-primary">Agregar</button>
+                          <button id="addUserFinishBtn" type="submit" class="btn btn-primary">Agregar</button>
                         </div>
                       </div>
                       <!-- End Footer -->
@@ -431,8 +433,8 @@
                       <img class="img-fluid mb-3" src="/static/svg/illustrations-light/oc-hi-five.svg" alt="Image Description" data-hs-theme-appearance="dark" style="max-width: 15rem;">
       
                       <div class="mb-4">
-                        <h2>Successful!</h2>
-                        <p>New <span class="fw-semibold text-dark">Ella Lauda</span> user has been successfully created.</p>
+                        <h2>Registrado Correctamente!</h2>
+                        <p>Nuevo <span class="fw-semibold text-dark">Perfil creado.</p>
                       </div>
       
                       <div class="d-flex justify-content-center">
@@ -475,6 +477,22 @@
           }
         });
       }
+    </script>
+    <script>
+      var data = {!! $success !!};
+      console.log(data);
+        if(data == 1){
+          var element = document.querySelector("#successMessageContent");
+          var element2 = document.querySelector("#addUserStepProfile");
+          console.log(element);
+          element.classList.add("active");
+          element2.classList.remove("active");
+          element.style.display = "";
+        }else{
+          if(data == 2){
+            alert("error al registrar, contacte al administrador");
+          }
+        }
     </script>
 </body>
 </html>

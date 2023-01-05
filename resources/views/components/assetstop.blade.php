@@ -33,6 +33,8 @@
  <script src="{{asset('static/vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
  <script src="{{asset('static/vendor/hs-quantity-counter/dist/hs-quantity-counter.min.js')}}"></script>
 
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <!-- JS Plugins Init. -->
 <script>
   $(document).on('ready', function () {
