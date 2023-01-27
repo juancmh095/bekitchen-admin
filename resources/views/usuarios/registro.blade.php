@@ -69,143 +69,159 @@
                   <h4 class="card-header-title">Detalles</h4>
                 </div>
                 <!-- End Header -->
-    
-                <!-- Body -->
-                <div class="card-body">
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label class="form-label">Foto</label>
-    
-                    <div class="d-flex align-items-center">
-                      <!-- Avatar -->
-                      <label class="avatar avatar-xl avatar-circle avatar-uploader me-5" for="avatarUploader">
-                        <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('static/svg/brands/guideline-icon.svg')}}" alt="Image Description">
-    
-                        <input type="file" class="js-file-attach avatar-uploader-input" id="avatarUploader" data-hs-file-attach-options='{
-                                  "textTarget": "#avatarProjectSettingsImg",
-                                  "mode": "image",
-                                  "targetAttr": "src",
-                                  "resetTarget": ".js-file-attach-reset-img",
-                                  "resetImg": "./assets/img/160x160/img2.jpg",
-                                  "allowTypes": [".png", ".jpeg", ".jpg"]
-                               }'>
-    
-                        <span class="avatar-uploader-trigger">
-                          <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
-                        </span>
-                      </label>
-                      <!-- End Avatar -->
-    
-                      <button type="button" class="js-file-attach-reset-img btn btn-white">Delete</button>
-                    </div>
-                  </div>
-                  <!-- End Form -->
-    
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Nombre(s)</label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-person"></i>
+                <form action="{{route('registrarUsuario')}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <!-- Body -->
+                  <div class="card-body">
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label class="form-label">Foto</label>
+      
+                      <div class="d-flex align-items-center">
+                        <!-- Avatar -->
+                        <label class="avatar avatar-xl avatar-circle avatar-uploader me-5" for="avatarUploader">
+                          <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('static/svg/brands/guideline-icon.svg')}}" alt="Image Description">
+      
+                          <input type="file" name="foto" class="js-file-attach avatar-uploader-input" id="avatarUploader" data-hs-file-attach-options='{
+                                    "textTarget": "#avatarProjectSettingsImg",
+                                    "mode": "image",
+                                    "targetAttr": "src",
+                                    "resetTarget": ".js-file-attach-reset-img",
+                                    "resetImg": "./assets/img/160x160/img2.jpg",
+                                    "allowTypes": [".png", ".jpeg", ".jpg"]
+                                 }'>
+      
+                          <span class="avatar-uploader-trigger">
+                            <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
+                          </span>
+                        </label>
+                        <!-- End Avatar -->
+      
+                        <button type="button" class="js-file-attach-reset-img btn btn-white">Delete</button>
                       </div>
-                      <input type="text" class="form-control" name="projectName" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                     </div>
-                  </div>
-                  <!-- End Form -->
-    
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Apellido Paterno </label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-list"></i>
+                    <!-- End Form -->
+      
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Nombre(s)</label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-person"></i>
+                        </div>
+                        <input type="text" class="form-control" name="nombre" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                       </div>
-                      <input type="text" class="form-control" name="projectName" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                     </div>
-                  </div>
-                  <!-- End Form -->
-
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Apellido Materno </label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-list"></i>
+                    <!-- End Form -->
+      
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Apellido Paterno </label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-list"></i>
+                        </div>
+                        <input type="text" class="form-control" name="ap" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                       </div>
-                      <input type="text" class="form-control" name="projectName" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                     </div>
-                  </div>
-                  <!-- End Form -->
-
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Correo </label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-envelope"></i>
+                    <!-- End Form -->
+  
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Apellido Materno </label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-list"></i>
+                        </div>
+                        <input type="text" class="form-control" name="am" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                       </div>
-                      <input type="email" class="form-control" name="projectName" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                     </div>
-                  </div>
-                  <!-- End Form -->
-
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Telefono </label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-phone"></i>
+                    <!-- End Form -->
+  
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Correo </label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-envelope"></i>
+                        </div>
+                        <input type="email" class="form-control" name="correo" id="nameSucursal" placeholder="Ingrese email" aria-label="Enter project name here">
                       </div>
-                      <input type="phone" class="form-control" name="projectName" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                     </div>
-                  </div>
-                  <!-- End Form -->
-
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Direccion </label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-phone"></i>
+                    <!-- End Form -->
+  
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Telefono </label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-phone"></i>
+                        </div>
+                        <input type="phone" class="form-control" name="telefono" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                       </div>
-                      <input type="text" class="form-control" name="projectName" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                     </div>
-                  </div>
-                  <!-- End Form -->
+                    <!-- End Form -->
 
-
-
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="nameSucursal" class="form-label">Tipo </label>
-    
-                    <div class="input-group input-group-merge">
-                      <div class="input-group-prepend input-group-text">
-                        <i class="bi-gear"></i>
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Password </label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-key"></i>
+                        </div>
+                        <input type="password" class="form-control" name="password" id="nameSucursal" placeholder="*********" aria-label="Enter project name here">
                       </div>
-                      <select name="" id="" class="form-control">
-                        <option value="">Administrador</option>
-                        <option value="">Empleado</option>
-                      </select>
                     </div>
+                    <!-- End Form -->
+  
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Direccion </label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-phone"></i>
+                        </div>
+                        <input type="text" class="form-control" name="direccion" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
+                      </div>
+                    </div>
+                    <!-- End Form -->
+  
+  
+  
+                    <!-- Form -->
+                    <div class="mb-4">
+                      <label for="nameSucursal" class="form-label">Tipo </label>
+      
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend input-group-text">
+                          <i class="bi-gear"></i>
+                        </div>
+                        <select id="" class="form-control" name="tipo">
+                          <option value="admin-tienda">Administrador</option>
+                          <option value="empleado">Empleado</option>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- End Form -->
+  
                   </div>
-                  <!-- End Form -->
+                  <!-- End Body -->
+      
+                  <!-- Footer -->
+                  <div class="card-footer d-flex justify-content-end align-items-center gap-3">
+                    <button type="reset" class="btn btn-white">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+                  <!-- End Footer -->
 
-                </div>
-                <!-- End Body -->
-    
-                <!-- Footer -->
-                <div class="card-footer d-flex justify-content-end align-items-center gap-3">
-                  <button type="button" class="btn btn-white">Cancelar</button>
-                  <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-                <!-- End Footer -->
+                </form>
               </div>
               <!-- End Card -->
     

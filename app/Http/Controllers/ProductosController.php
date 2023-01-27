@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\MenusProductos;
 use Illuminate\Http\Request;
 use App\Models\Productos;
@@ -31,7 +32,6 @@ class ProductosController extends Controller
     {
         //
         try {
-            //dd($request);
             //code...
             //dd($request->file());
             $foto = "";
@@ -50,7 +50,9 @@ class ProductosController extends Controller
                 'categoria'=>$request['categoria'], 
                 'etiquetas'=>$request['tagsLabel'], 
                 'media'=>$foto, 
-                'id_negocio'=>18
+                'id_negocio'=>$request->user()->id_negocio,
+                'top'=>$request['top'],
+                'mas_comprados'=>$request['mas_comprados'],
             ]);
 
             return view('productos.registro',["success"=>1]);
@@ -70,6 +72,8 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $categorias = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+        return view('productos.registro',['success'=>0,"categorias"=>$categorias]);
     }
 
     /**
@@ -89,9 +93,13 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        $id = $request['id'];
+        $producto = Productos::find($id);
+        $categorias = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+        return view('productos.editar',["success"=>0,"producto"=>$producto,"categorias"=>$categorias]);
     }
 
     /**
@@ -101,9 +109,41 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        try {
+            //code...
+            //dd($request->file());
+            $foto = "";
+            if($request->file('foto')!=null){
+                //obtenemos el campo file definido en el formulario
+                $file = $request->file('foto');
+                //indicamos que queremos guardar un nuevo archivo en el disco local
+                $foto = Storage::disk('public')->put('fotos', $file);
+            }
+            //dd($request->all());
+            Productos::where('id',$request['id'])->update([
+                'nombre'=>$request['productName'], 
+                'sku'=>$request['SKU'], 
+                'peso'=>$request['weightName'].$request['unidadm'], 
+                'precio'=>$request['priceName'], 
+                'descripcion'=>isset($request['description'])?$request['description']:'N/A', 
+                'categoria'=>$request['categoria'], 
+                'etiquetas'=>$request['tagsLabel'], 
+                'media'=>$foto, 
+                'top'=>isset($request['top'])?1:0,
+                'mas_comprados'=>isset($request['mas_comprados'])?1:0,
+                'id_negocio'=>$request->user()->id_negocio
+            ]);
+            $producto = Productos::find($request['id']);
+            $categorias = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+            return view('productos.editar',["success"=>1,"producto"=>$producto,"categorias"=>$categorias]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            $data = Productos::all();
+            return view('productos.productos',["success"=>2,'productos'=>$data]);
+        }
     }
 
     /**

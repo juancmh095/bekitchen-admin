@@ -14,9 +14,11 @@ class UsuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $usuarios = User::where('id_negocio',$request->user()->id_negocio)->get();
+        return view('usuarios.listado',['usuarios'=>$usuarios]);
     }
 
     /**
@@ -79,6 +81,43 @@ class UsuariosController extends Controller
         }
     }
 
+    public function created(Request $request)
+    {
+        //
+        try {
+            //registrar usuario admin y negocio
+            $idNegocio = 0;
+            $foto = "";
+            $passwordRdn = "";
+            if($request->file('foto')!=null){
+                //obtenemos el campo file definido en el formulario
+                $file = $request->file('foto');
+                //indicamos que queremos guardar un nuevo archivo en el disco local
+                $foto = Storage::disk('public')->put('fotos', $file);
+            }
+            User::create(
+                [
+                    'nombre'=>$request['nombre'], 
+                    'ap_paterno'=>$request['ap'], 
+                    'ap_materno'=>$request['am'], 
+                    'telefono'=>$request['telefono'], 
+                    'direccion'=>$request['direccion'], 
+                    'tipo'=>$request['tipo'], 
+                    'foto'=>$foto, 
+                    'id_negocio'=>$request->user()->id_negocio, 
+                    'email'=>$request['correo'], 
+                    'password'=>$request['password']
+                ]
+            );
+
+            return view('usuarios.registro',['success'=>1]);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return view('usuarios.registro',['success'=>2]);
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -88,6 +127,7 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         //
+        return view('usuarios.registro',['success'=>0]);
     }
 
     /**
@@ -133,5 +173,40 @@ class UsuariosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function apiUsuarios(Request $request){
+        try {
+            //code...
+            User::create(
+                [
+                    'nombre'=>$request['nombre'], 
+                    'ap_paterno'=>$request['apellidop'], 
+                    'ap_materno'=>$request['apellidom'], 
+                    'telefono'=>$request['phone'], 
+                    'direccion'=>'N/A', 
+                    'tipo'=>'cliente', 
+                    'foto'=>'N/A', 
+                    'id_negocio'=>0, 
+                    'email'=>$request['email'], 
+                    'password'=>$request['password']
+                ]
+            );
+            return ['ok'=>true,'text'=>''];
+        } catch (\Throwable $th) {
+            //throw $th;
+            return ['ok'=>false,'text'=>$th];
+        }
+    }
+
+    public function apiLogin(Request $request){
+        $usuario = User::where('email','=',$request['email'])->where('password','=',$request['password'])->where('tipo','=','cliente')->get();
+
+        if(count($usuario) > 0){
+            return ['ok'=>true,'data'=>$usuario[0]];
+        }else{
+            return ['ok'=>false,'data'=>array()];
+
+        }
     }
 }

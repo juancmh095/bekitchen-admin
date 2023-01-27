@@ -280,7 +280,7 @@
                           @if($item->media == "")
                             <img class="avatar avatar-lg" src="{{asset('static/img/producto.jpg')}}" alt="Image Description">
                           @else
-                            <img class="avatar avatar-lg" src="{{asset($item->media)}}" alt="Image Description">
+                            <img class="avatar avatar-lg" src="{{asset('storage/'.$item->media)}}" alt="Image Description">
                           @endif
                         </div>
                         <div class="flex-grow-1 ms-3">
@@ -300,8 +300,8 @@
                     <td>$ {{$item->precio}}</td>
                     <td>
                       <div class="btn-group" role="group">
-                        <a class="btn btn-white btn-sm" href="./ecommerce-product-details.html">
-                          <i class="bi-pencil-fill me-1"></i> Edit
+                        <a class="btn btn-white btn-sm" href="{{route('/producto',['id'=>$item->id])}}">
+                          <i class="bi-pencil-fill me-1"></i> Editar
                         </a>
     
                         <!-- Button Group -->
@@ -310,16 +310,7 @@
     
                           <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="productsEditDropdown1">
                             <a class="dropdown-item" href="#">
-                              <i class="bi-trash dropdown-item-icon"></i> Delete
-                            </a>
-                            <a class="dropdown-item" href="#">
-                              <i class="bi-archive dropdown-item-icon"></i> Archive
-                            </a>
-                            <a class="dropdown-item" href="#">
-                              <i class="bi-upload dropdown-item-icon"></i> Publish
-                            </a>
-                            <a class="dropdown-item" href="#">
-                              <i class="bi-x-lg dropdown-item-icon"></i> Unpublish
+                              <i class="bi-trash dropdown-item-icon"></i> Eliminar
                             </a>
                           </div>
                         </div>

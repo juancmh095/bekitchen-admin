@@ -67,8 +67,7 @@
                     </label>
                   </div>
                 </th>
-                <th class="table-column-ps-0">Nombre</th>
-                <th>Code</th>
+                <th class="table-column-ps-0">Codigo</th>
                 <th>Importe Min.</th>
                 <th>Activo</th>
                 <th>Porcentaje</th>
@@ -79,6 +78,7 @@
             </thead>
 
             <tbody>
+              @foreach($cupones as $item)
               <tr>
                 <td class="table-column-pe-0">
                   <div class="form-check">
@@ -89,21 +89,20 @@
                 <td class="table-column-ps-0">
                   <a class="d-flex align-items-center" href="#">
                     <div class="flex-grow-1 ms-3">
-                      <h5 class="text-inherit mb-0">Cupon 1</h5>
+                      <h5 class="text-inherit mb-0">{{$item->codigo}}</h5>
                     </div>
                   </a>
                 </td>
-                <td>BE-CODE-01</td>
-                <td>0</td>
+                <td>{{$item->importe_minomo}}</td>
                 <td>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="stocksCheckbox1" checked>
                     <label class="form-check-label" for="stocksCheckbox1"></label>
                   </div>
                 </td>
-                <td>20%</td>   
-                <td>01/01/2023</td>   
-                <td>N/A</td>
+                <td>{{$item->porcentaje}}</td>   
+                <td>{{$item->limite_fecha}}</td>   
+                <td>{{$item->canjes}}</td>
                 <td>
                   <div class="btn-group" role="group">
                     <a class="btn btn-white btn-sm" href="./ecommerce-product-details.html">
@@ -133,6 +132,7 @@
                   </div>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -158,138 +158,123 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <!-- End Header -->
+        <form action="{{route('registroCupon')}}" method="POST">
+          @csrf
+          <div class="modal-body">
+            <label for="eventTitleLabel" class="visually-hidden form-label">Nombre</label>
+            <textarea id="eventTitleLabel" class="form-control form-control-title" name="nombre" placeholder="Agregar Codigo"></textarea>
+  
+            
+            <!-- End Row -->
+            <div class="row mb-4">
+              <div class="col-sm-3 mb-2 mb-sm-0">
+                <div class="d-flex align-items-center mt-2">
+                  <i class="bi-percent nav-icon"></i>
+                  <div class="flex-grow-1">Descuento por porcentaje</div>
+                </div>
+              </div>
+              <!-- End Col -->
+  
+              <div class="col-sm">
+                <!-- Flatpickr -->
+                <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" name="porcentaje" placeholder="%">
+                <!-- End Flatpickr -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+  
+            <!-- End Row -->
+            <div class="row mb-4">
+              <div class="col-sm-3 mb-2 mb-sm-0">
+                <div class="d-flex align-items-center mt-2">
+                  <i class="bi-currency-dollar nav-icon"></i>
+                  <div class="flex-grow-1">Descuento por importe</div>
+                </div>
+              </div>
+              <!-- End Col -->
+  
+              <div class="col-sm">
+                <!-- Flatpickr -->
+                <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" name="importe" placeholder="$0,00">
+                <!-- End Flatpickr -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+  
+            <div class="row mb-4">
+              <div class="col-sm-3 mb-2 mb-sm-0">
+                <div class="d-flex align-items-center mt-2">
+                  <i class="bi-calendar-event nav-icon"></i>
+                  <div class="flex-grow-1">Limite por fecha</div>
+                </div>
+              </div>
+              <!-- End Col -->
+  
+              <div class="col-sm">
+                <label for="eventDateRangeLabel" class="visually-hidden form-label">Date</label>
+  
+                <!-- Flatpickr -->
+                <input type="date" name="fecha" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="Select dates" data-hs-flatpickr-options='{
+                         "dateFormat": "m/d/Y",
+                         "mode": "range",
+                         "minDate": "12/01/2020"
+                       }'>
+                <!-- End Flatpickr -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+  
+            <!-- End Row -->
+            <div class="row mb-4">
+              <div class="col-sm-3 mb-2 mb-sm-0">
+                <div class="d-flex align-items-center mt-2">
+                  <i class="bi-ticket nav-icon"></i>
+                  <div class="flex-grow-1">Numero de canjes</div>
+                </div>
+              </div>
+              <!-- End Col -->
+  
+              <div class="col-sm">
+                <!-- Flatpickr -->
+                <input type="number" id="eventDateRangeLabel" name="canjes" class="flatpickr-custom form-control mb-2" placeholder="000">
+                <!-- End Flatpickr -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+  
+            <div class="row mb-4">
+              <div class="col-sm-3 mb-2 mb-sm-0">
+                <div class="d-flex align-items-center mt-2">
+                  <i class="bi-ticket nav-icon"></i>
+                  <div class="flex-grow-1">Importe minimo</div>
+                </div>
+              </div>
+              <!-- End Col -->
+  
+              <div class="col-sm">
+                <!-- Flatpickr -->
+                <input type="number" id="eventDateRangeLabel" name="importe_minimo" class="flatpickr-custom form-control mb-2" placeholder="0">
+                <!-- End Flatpickr -->
+              </div>
+              <!-- End Col -->
+            </div>
+            <!-- End Row -->
+          </div>
+          <!-- End Body -->
+  
+          <!-- Footer -->
+          <div class="modal-footer gap-3">
+            <button type="reset" id="discardFormt" class="btn btn-white" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" id="processEvent" class="btn btn-primary">Registrar cupon</button>
+          </div>
+          <!-- End Footer -->
 
+        </form>
         <!-- Body -->
-        <div class="modal-body">
-          <label for="eventTitleLabel" class="visually-hidden form-label">Nombre</label>
-          <textarea id="eventTitleLabel" class="form-control form-control-title" placeholder="Agregar nombre"></textarea>
-
-          
-          <!-- End Row -->
-          <div class="row mb-4">
-            <div class="col-sm-3 mb-2 mb-sm-0">
-              <div class="d-flex align-items-center mt-2">
-                <i class="bi-percent nav-icon"></i>
-                <div class="flex-grow-1">Descuento por porcentaje</div>
-              </div>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-sm">
-              <!-- Flatpickr -->
-              <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="%">
-              <!-- End Flatpickr -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-
-          <!-- End Row -->
-          <div class="row mb-4">
-            <div class="col-sm-3 mb-2 mb-sm-0">
-              <div class="d-flex align-items-center mt-2">
-                <i class="bi-currency-dollar nav-icon"></i>
-                <div class="flex-grow-1">Descuento por importe</div>
-              </div>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-sm">
-              <!-- Flatpickr -->
-              <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="$0,00">
-              <!-- End Flatpickr -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-
-          <div class="row mb-4">
-            <div class="col-sm-3 mb-2 mb-sm-0">
-              <div class="d-flex align-items-center mt-2">
-                <i class="bi-calendar-event nav-icon"></i>
-                <div class="flex-grow-1">Limite por fecha</div>
-              </div>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-sm">
-              <label for="eventDateRangeLabel" class="visually-hidden form-label">Date</label>
-
-              <!-- Flatpickr -->
-              <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="Select dates" data-hs-flatpickr-options='{
-                       "dateFormat": "m/d/Y",
-                       "mode": "range",
-                       "minDate": "12/01/2020"
-                     }'>
-              <!-- End Flatpickr -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-
-          <!-- End Row -->
-          <div class="row mb-4">
-            <div class="col-sm-3 mb-2 mb-sm-0">
-              <div class="d-flex align-items-center mt-2">
-                <i class="bi-ticket nav-icon"></i>
-                <div class="flex-grow-1">Numero de canjes</div>
-              </div>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-sm">
-              <!-- Flatpickr -->
-              <input type="number" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="000">
-              <!-- End Flatpickr -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-
-          <div class="row mb-4">
-            <div class="col-sm-3 mb-2 mb-sm-0">
-              <div class="d-flex align-items-center mt-2">
-                <i class="bi-ticket nav-icon"></i>
-                <div class="flex-grow-1">Codigo</div>
-              </div>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-sm">
-              <!-- Flatpickr -->
-              <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="BE-CODE-PROMO">
-              <!-- End Flatpickr -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-
-          <div class="row mb-4">
-            <div class="col-sm-3 mb-2 mb-sm-0">
-              <div class="d-flex align-items-center mt-2">
-                <i class="bi-ticket nav-icon"></i>
-                <div class="flex-grow-1">Importe minimo</div>
-              </div>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-sm">
-              <!-- Flatpickr -->
-              <input type="numbre" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="0">
-              <!-- End Flatpickr -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-        </div>
-        <!-- End Body -->
-
-        <!-- Footer -->
-        <div class="modal-footer gap-3">
-          <button type="button" id="discardFormt" class="btn btn-white" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" id="processEvent" class="btn btn-primary">Registrar cupon</button>
-        </div>
-        <!-- End Footer -->
       </div>
     </div>
   </div>

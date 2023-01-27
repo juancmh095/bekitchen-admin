@@ -19,11 +19,11 @@
                 <ol class="breadcrumb breadcrumb-no-gutter">
                   <li class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></li>
                   <li class="breadcrumb-item"><a class="breadcrumb-link" href="/productos">Productos</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Agregar Producto</li>
+                  <li class="breadcrumb-item active" aria-current="page">Editar Producto</li>
                 </ol>
               </nav>
   
-              <h1 class="page-header-title">Agregar producto</h1>
+              <h1 class="page-header-title">Editar producto</h1>
             </div>
             <!-- End Col -->
           </div>
@@ -31,9 +31,10 @@
         </div>
         <!-- End Page Header -->
   
-        <form action="{{route('registroProducto')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('editarProducto')}}" method="POST" enctype="multipart/form-data">
           @csrf
         <div class="row">
+          <input type="hidden" name="id" value="{{$producto->id}}">
           <div class="col-lg-8 mb-3 mb-lg-0">
             <!-- Card -->
             <div class="card mb-3 mb-lg-5">
@@ -77,7 +78,7 @@
                 <div class="mb-4">
                   <label for="productNameLabel" class="form-label">Nombre <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Products are the goods or services you sell."></i></label>
   
-                  <input type="text" class="form-control" name="productName" id="productNameLabel" placeholder="pizza, coca cola ..." aria-label="Shirt, t-shirts, etc." required>
+                  <input type="text" class="form-control" name="productName" id="productNameLabel" placeholder="pizza, coca cola ..." aria-label="Shirt, t-shirts, etc." value="{{$producto->nombre}}" required>
                 </div>
                 <!-- End Form -->
   
@@ -87,7 +88,7 @@
                     <div class="mb-4">
                       <label for="SKULabel" class="form-label">SKU</label>
   
-                      <input type="text" class="form-control" name="SKU" id="SKULabel" placeholder="eg. 348121032" aria-label="eg. 348121032" required>
+                      <input type="text" class="form-control" name="SKU" id="SKULabel" placeholder="eg. 348121032" aria-label="eg. 348121032" value="{{$producto->sku}}" required>
                     </div>
                     <!-- End Form -->
                   </div>
@@ -99,7 +100,7 @@
                       <label for="weightLabel" class="form-label">Peso</label>
   
                       <div class="input-group">
-                        <input type="text" class="form-control" name="weightName" id="weightLabel" placeholder="0.0" aria-label="0.0" required>
+                        <input type="text" class="form-control" name="weightName" id="weightLabel" placeholder="0.0" aria-label="0.0" value="{{$producto->peso}}" required>
   
                         <div class="input-group-append">
                           <!-- Select -->
@@ -125,11 +126,11 @@
                 </div>
                 <!-- End Row -->
   
-                <label class="form-label">Descripcion <span class="form-label-secondary">(Optional)</span></label>
+                <label class="form-label">Descripcion <span class="form-label-secondary" >(Optional)</span></label>
   
                 <!-- Quill -->
                 <div class="quill-custom">
-                  <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+                  <textarea class="form-control" name="description" id="" cols="30" rows="10">{{$producto->descripcion}}</textarea>
                 </div>
                 <!-- End Quill -->
               </div>
@@ -158,7 +159,7 @@
                   <label for="priceNameLabel" class="form-label">Precio</label>
   
                   <div class="input-group">
-                    <input type="text" class="form-control" name="priceName" id="priceNameLabel" placeholder="0.00" aria-label="0.00" required>
+                    <input type="text" class="form-control" name="priceName" id="priceNameLabel" placeholder="0.00" aria-label="0.00" value="{{$producto->precio}}" required>
   
                     <div class="input-group-append">
                       <!-- Select -->
@@ -169,8 +170,8 @@
                                   "dropdownWidth": "7rem",
                                   "dropdownWrapperClass": "tom-select-custom tom-select-custom-end"
                                 }' required>
-                                <option value="MXN">MXN</option>
-                          <option value="USD" selected>USD</option>
+                                <option value="MXN" selected>MXN</option>
+                          <option value="USD" >USD</option>
                         </select>
                       </div>
                       <!-- End Select -->
@@ -207,9 +208,9 @@
                               "hideSearch": true,
                               "placeholder": "Select category"
                             }'>
-                            @foreach($categorias as $item)
-                              <option value="{{$item->nombre}}">{{$item->nombre}}</option>
-                            @endforeach
+                      <@foreach($categorias as $item)
+                        <option value="{{$item->nombre}}">{{$item->nombre}}</option>
+                      @endforeach
                     </select>
                   </div>
                   <!-- End Select -->
@@ -218,17 +219,17 @@
   
                 <label for="tagsLabel" class="form-label">Etiquetas</label>
   
-                <input type="text" class="form-control" name="tagsLabel" id="tagsLabel" placeholder="Enter tags here" aria-label="Enter tags here" value=".">
+                <input type="text" class="form-control" name="tagsLabel" id="tagsLabel" placeholder="Enter tags here" aria-label="Enter tags here" value="{{$producto->etiquetas}}" value=".">
               
                 <br>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="top">
+                  <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="top" @if($producto->top == 1) checked @endif>
                   <label class="form-check-label" for="flexCheckDefault">
                     Top de ventas
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="flexCheckChecked" name="mas_comprados">
+                  <input class="form-check-input" type="checkbox" id="flexCheckChecked" name="mas_comprados" @if($producto->mas_comprados == 1) checked @endif>
                   <label class="form-check-label" for="flexCheckChecked">
                     Mas vendidos
                   </label>

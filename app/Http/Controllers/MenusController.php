@@ -19,10 +19,10 @@ class MenusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $productos = Productos::all();
+        $productos = Productos::where('id_negocio',$request->user()->id_negocio)->get();
         $combos = Combos::all();
         $sucursales = Sucursal::all();
         return view('menus.registro',['productos'=>$productos,'combos'=>$combos,'sucursales'=>$sucursales,'success'=>2]);
@@ -41,7 +41,7 @@ class MenusController extends Controller
             //code...
             Menus::create([
                 'nombre'=>$request['nombre'],
-                'id_negocio'=>18
+                'id_negocio'=>$request->user()->id_negocio
             ]);
             $menu = Menus::latest('id')->first();
             $productos = $request['producto'];
@@ -82,7 +82,7 @@ class MenusController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th);
+            //dd($th);
             return back()->with(['success'=>0]);
         }
     }

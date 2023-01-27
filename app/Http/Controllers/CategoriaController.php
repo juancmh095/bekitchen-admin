@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cupones;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class CuponesController extends Controller
+class CategoriaController extends Controller
 {
-    /**
+    //
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -15,8 +16,8 @@ class CuponesController extends Controller
     public function index(Request $request)
     {
         //
-        $data = Cupones::where('id_negocio',$request->user()->id_negocio)->get();
-        return view('cupones.registro',['cupones'=>$data]);
+        $data = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+        return view('productos.categorias',['categorias'=>$data]);
     }
 
     /**
@@ -29,22 +30,16 @@ class CuponesController extends Controller
         //
         try {
             //code...
-            Cupones::create([
-                'porcentaje'=>$request['porcentaje'],
-                'importe'=>$request['importe'], 
-                'limite_fecha'=>$request['fecha'],
-                'canjes'=>$request['canjes'],
-                'codigo'=>$request['nombre'],
-                'importe_minimo'=>$request['importe_minimo'],
+            Categoria::create([
+                'nombre'=>$request['nombre'],
                 'id_negocio'=> $request->user()->id_negocio
             ]);
-            $data = Cupones::where('id_negocio',$request->user()->id_negocio)->get();
-            return view('cupones.registro',['cupones'=>$data,'success'=>1]);
+            $data = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+            return view('productos.categorias',['categorias'=>$data,'success'=>1]);
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th);
-            $data = Cupones::where('id_negocio',$request->user()->id_negocio)->get();
-            return view('cupones.registro',['cupones'=>$data,'success'=>0]);
+            $data = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+            return view('productos.categorias',['categorias'=>$data,'success'=>1]);
         }
     }
 
@@ -99,8 +94,11 @@ class CuponesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        Categoria::find($request['id'])->delete();
+        $data = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+        return view('productos.categorias',['categorias'=>$data]);
     }
 }

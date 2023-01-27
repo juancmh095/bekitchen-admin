@@ -83,6 +83,7 @@
 
                 <div id="productos" class="nav-collapse collapse " data-bs-parent="#productos">
                   <a class="nav-link " href="/productos/registro">Registrar producto</a>
+                  <a class="nav-link " href="/categorias">Categorias</a>
                   <a class="nav-link " href="/productos">Listado</a>
                   <div class="nav-item">
                     <a class="nav-link dropdown-toggle " href="#combos" role="button" data-bs-toggle="collapse" data-bs-target="#combos" aria-expanded="false" aria-controls="combos">
@@ -132,12 +133,12 @@
                   <span class="nav-link-title">Cupones</span>
                 </a>
               </div>
-              <div class="nav-item">
+              {{-- <div class="nav-item">
                 <a class="nav-link " href="/negocio/perfil" data-placement="left">
                   <i class="bi-person nav-icon"></i>
                   <span class="nav-link-title">Mi Perfil</span>
                 </a>
-              </div>
+              </div> --}}
             </div>
             <!-- End Collapse -->
 

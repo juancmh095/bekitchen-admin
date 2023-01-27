@@ -143,7 +143,6 @@
                     </div>
                   </th>
                   <th class="table-column-ps-0">Combos</th>
-                  <th># Productos</th>
                   <th>Fecha de expiracion</th>
                   <th>Activo</th>
                   <th>Registrado</th>
@@ -152,6 +151,7 @@
               </thead>
   
               <tbody>
+                @foreach($combos as $item)
                 <tr>
                   <td class="table-column-pe-0">
                     <div class="form-check">
@@ -162,22 +162,21 @@
                   <td class="table-column-ps-0">
                     <a class="d-flex align-items-center" href="./ecommerce-product-details.html">
                       <div class="flex-shrink-0">
-                        <img class="avatar avatar-lg" src="./static/img/400x400/img4.jpg" alt="Image Description">
+                        <img class="avatar avatar-lg" src="{{asset('storage/'.$item->banner)}}" alt="Image Description">
                       </div>
                       <div class="flex-grow-1 ms-3">
-                        <h5 class="text-inherit mb-0">Menu 1</h5>
+                        <h5 class="text-inherit mb-0">{{$item->nombre}}</h5>
                       </div>
                     </a>
                   </td>
-                  <td>10</td>
-                  <td>12/10/2022</td>
+                  <td>{{$item->fecha_exp}}</td>
                   <td>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="stocksCheckbox1" checked>
                       <label class="form-check-label" for="stocksCheckbox1"></label>
                     </div>
                   </td>
-                  <td>2384741241</td>   
+                  <td>{{$item->created_at}}</td>   
                   <td>
                     <div class="btn-group" role="group">
                       <a class="btn btn-white btn-sm" href="./ecommerce-product-details.html">
@@ -192,21 +191,13 @@
                           <a class="dropdown-item" href="#">
                             <i class="bi-trash dropdown-item-icon"></i> Delete
                           </a>
-                          <a class="dropdown-item" href="#">
-                            <i class="bi-archive dropdown-item-icon"></i> Archive
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <i class="bi-upload dropdown-item-icon"></i> Publish
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <i class="bi-x-lg dropdown-item-icon"></i> Unpublish
-                          </a>
                         </div>
                       </div>
                       <!-- End Button Group -->
                     </div>
                   </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

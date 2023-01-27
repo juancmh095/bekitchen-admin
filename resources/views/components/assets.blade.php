@@ -23,6 +23,10 @@
 <link rel="preload" href="{{ asset('static/css/theme.min.css') }}" data-hs-appearance="default" as="style">
 <link rel="preload" href="{{ asset('static/css/theme-dark.min.css') }}" data-hs-appearance="dark" as="style">
 
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 <style data-hs-appearance-onload-styles>
     * {
         transition: unset !important;

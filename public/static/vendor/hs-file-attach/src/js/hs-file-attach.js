@@ -10,7 +10,7 @@
 const dataAttributeName = 'data-hs-file-attach-options'
 const defaults = {
 	textTarget: null,
-	maxFileSize: 1024, // Infinity - off file size detection
+	maxFileSize: 6024, // Infinity - off file size detection
 	errorMessage: 'File is too big!',
 	typeErrorMessage: 'Unsupported file type',
 	mode: 'simple',

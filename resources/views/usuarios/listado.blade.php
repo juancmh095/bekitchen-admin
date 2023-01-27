@@ -17,27 +17,9 @@
           <div class="page-header">
             <div class="row align-items-center mb-3">
               <div class="col-md mb-2 mb-md-0">
-                <h1 class="page-header-title">Usuarios <span class="badge bg-soft-dark text-dark ms-2">97,524</span></h1>
+                <h1 class="page-header-title">Usuarios <span class="badge bg-soft-dark text-dark ms-2">{{count($usuarios)}}</span></h1>
     
-                <div class="d-sm-flex mt-2">
-                  <a class="d-inline-block text-body mb-2 mb-sm-0 me-3" href="javascript:;" data-bs-toggle="modal" data-bs-target="#exportCustomersModal">
-                    <i class="bi-download me-1"></i> Exportar
-                  </a>
-    
-                  <!-- Dropdown -->
-                  <div class="dropdown">
-                    <a class="d-inline-block text-body mb-2 mb-sm-0 me-3" href="javascript:;" id="moreOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      Más Opciones <i class="bi-chevron-down"></i>
-                    </a>
-    
-                    <div class="dropdown-menu mt-1" aria-labelledby="moreOptionsDropdown">
-                      <a class="dropdown-item" href="#">
-                        <i class="bi-pencil dropdown-item-icon"></i> Editar
-                      </a>
-                    </div>
-                  </div>
-                  <!-- End Dropdown -->
-                </div>
+                
               </div>
               <!-- End Col -->
     
@@ -257,40 +239,40 @@
                       </div>
                     </th>
                     <th class="table-column-ps-0">Nombre</th>
+                    <th>Tipo</th>
                     <th>E-mail</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
-                    <th>Estatus</th>
                   </tr>
                 </thead>
     
                 <tbody>
-                  <tr>
-                    <td class="table-column-pe-0">
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="usersDataCheck1">
-                        <label class="form-check-label" for="usersDataCheck1"></label>
-                      </div>
-                    </td>
-                    <td class="table-column-ps-0">
-                      <a class="d-flex align-items-center" href="./ecommerce-customer-details.html">
-                        <div class="flex-shrink-0">
-                          <div class="avatar avatar-circle">
-                            <img class="avatar-img" src="{{('static/img/160x160/img10.jpg')}}" alt="Image Description">
+                  @foreach($usuarios as $item)
+                    <tr>
+                      <td class="table-column-pe-0">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="usersDataCheck1">
+                          <label class="form-check-label" for="usersDataCheck1"></label>
+                        </div>
+                      </td>
+                      <td class="table-column-ps-0">
+                        <a class="d-flex align-items-center" href="./ecommerce-customer-details.html">
+                          <div class="flex-shrink-0">
+                            <div class="avatar avatar-circle">
+                              <img class="avatar-img" src="{{asset('storage/'.$item->foto)}}" alt="Image Description">
+                            </div>
                           </div>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                          <span class="h5 text-inherit">Usuario 1 <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
-                        </div>
-                      </a>
-                    </td>
-                    <td>amanda@site.com</td>
-                    <td>+1-202-555-0140</td>
-                    <td>United Kingdom</td>
-                    <td>
-                      <span class="legend-indicator bg-success"></span>Active
-                    </td>
-                  </tr>    
+                          <div class="flex-grow-1 ms-3">
+                            <span class="h5 text-inherit">{{$item->foto}} <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                          </div>
+                        </a>
+                      </td>
+                      <td>{{$item->tipo}}</td>
+                      <td>{{$item->email}}</td>
+                      <td>{{$item->telefono}}</td>
+                      <td>{{$item->direccion}}</td>
+                    </tr>    
+                  @endforeach
                   
                 </tbody>
               </table>

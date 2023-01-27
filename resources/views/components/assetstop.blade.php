@@ -113,6 +113,32 @@
 <script>
   (function() {
     window.onload = function () {
+
+      var success = {!! isset($success)?$success:0 !!};
+      if(Number(success) > 0){
+        var msg = 'Bienvenido';
+        var color = "linear-gradient(60deg, rgba(0,0,0,1) 0%, rgba(3,1,64,1) 29%, rgba(7,3,135,1) 68%, rgba(7,3,135,1) 100%);";
+        if(success == 1){
+          msg = 'Registro correcto';
+        }else{
+          msg = 'Error al registrar el producto';
+          color = 'linear-gradient(60deg, rgba(0,0,0,1) 0%, rgba(255,0,9,1) 100%);';
+        }
+        Toastify({
+          text: msg,
+          duration: 3000,
+          destination: "",
+          newWindow: true,
+          close: true,
+          gravity: "bottom", // `top` or `bottom`
+          position: "right", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: color,
+          },
+          onClick: function(){} // Callback after click
+        }).showToast();
+      }
       
 
       // INITIALIZATION OF NAVBAR VERTICAL ASIDE

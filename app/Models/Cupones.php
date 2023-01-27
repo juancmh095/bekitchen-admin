@@ -12,7 +12,7 @@ class Cupones extends Model
     protected $table = 'cupones';
 
     protected $fillable = [
-        'procentaje', 'importe', 'limite_fecha', 'canjes', 'codigo', 'importe_minimo'
+        'porcentaje', 'importe', 'limite_fecha', 'canjes', 'codigo', 'importe_minimo','id_negocio'
     ];
 
     public function cupones()

@@ -97,7 +97,7 @@
                     <div id="addAnotherOptionFieldContainer"></div>
     
                     <a href="javascript:;" class="js-create-field form-link">
-                      <i class="bi-plus"></i> Agregar nuevo producto
+                      <i class="bi-plus"></i> Agregar producto existente
                     </a>
                   </div>
     
