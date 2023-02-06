@@ -38,6 +38,47 @@
 <!-- JS Plugins Init. -->
 <script>
   $(document).on('ready', function () {
+
+    function initMap(){
+      console.log('inicia mapa');
+        
+    
+      const input = document.getElementById("pac-input");
+        const searchBox = new google.maps.places.SearchBox(input);
+        console.log('SEARCH',searchBox);
+    
+        let markers = [];
+    
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener("places_changed", async () => {
+          const places = searchBox.getPlaces();
+          console.log('places',places[0].geometry.location.lat())
+          if (places.length == 0) {
+            return;
+          }
+    
+          document.getElementById('lat').value = places[0].geometry.location.lat();
+          document.getElementById('lng').value = places[0].geometry.location.lng();
+          var direccion = {
+            nombre: places[0].name,
+            direccion: places[0].formatted_address,
+            lat:String(places[0].geometry.location.lat()),
+            lng:String(places[0].geometry.location.lng()), 
+          }
+          
+          console.log(direccion);
+          
+      
+          // For each place, get the icon, name and location.
+          const bounds = new google.maps.LatLngBounds();
+      
+          
+        });
+
+      }
+
+      initMap();
     // INITIALIZATION OF DATERANGEPICKER
     // =======================================================
     $('.js-daterangepicker').daterangepicker();

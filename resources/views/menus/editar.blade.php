@@ -31,7 +31,7 @@
         </div>
         <!-- End Page Header -->
   
-        <form action="{{route('registroMenu')}}" method="post">
+        <form action="{{route('updateMenu')}}" method="post">
           @csrf
           <div class="row">
             <div class="col-lg-8 mb-3 mb-lg-0">
@@ -42,14 +42,14 @@
                   <h4 class="card-header-title">Informacion del menu</h4>
                 </div>
                 <!-- End Header -->
-    
+                <input type="hidden" name="id" value="{{$menu->id}}">
                 <!-- Body -->
                 <div class="card-body">
                   <!-- Form -->
                   <div class="mb-4">
                     <label for="productNameLabel" class="form-label">Nombre <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Products are the goods or services you sell."></i></label>
     
-                    <input type="text" class="form-control" name="nombre" id="productNameLabel" placeholder="Shirt, t-shirts, etc." aria-label="Shirt, t-shirts, etc.">
+                    <input type="text" class="form-control" name="nombre" id="productNameLabel" placeholder="Shirt, t-shirts, etc." aria-label="Shirt, t-shirts, etc." value="{{$menu->nombre}}">
                   </div>
                   <!-- End Form -->
     
@@ -62,7 +62,7 @@
               <div class="card mb-3 mb-lg-5">
                 <!-- Header -->
                 <div class="card-header">
-                  <h4 class="card-header-title">Productos</h4>
+                  <h4 class="card-header-title">Productos Registrados</h4>
                 </div>
                 <!-- End Header -->
     
@@ -124,7 +124,25 @@
                     <!-- End Row -->
                   </div>
                   <!-- End Add Another Option Input Field -->
-                  
+                  {{-- tabla de datos ya guardados --}}
+                  <hr>
+                    <h5>Productos asigandos al menu</h5>
+                  <table class="table">
+                    <thead>
+                      <th>Producto</th>
+                      <th style="text-align: right">Opcion</th>
+                    </thead>
+                    <tbody>
+                      @forEach($menuProductos as $item)
+                      <tr>
+                        <td>{{$item->producto?$item->producto->nombre:'N/A'}}</td>
+                        <td style="text-align: right">
+                          <a href="{{route('deleteProductoMenu',['id'=>$item->id])}}" class="btn btn-xs btn-danger">Elminiar</a>
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
                 <!-- Body -->
               </div>
@@ -134,7 +152,7 @@
               <div class="card mb-3 mb-lg-0">
                   <!-- Header -->
                   <div class="card-header">
-                    <h4 class="card-header-title">Combos</h4>
+                    <h4 class="card-header-title">Combos Registrados</h4>
                   </div>
                   <!-- End Header -->    
                   <!-- Body -->
@@ -193,6 +211,24 @@
                       <!-- End Row -->
                     </div>
                     <!-- End Add Another Option Input Field -->
+                    <hr>
+                    <h5>Combos asigandos al menu</h5>
+                    <table class="table">
+                      <thead>
+                        <th>Producto</th>
+                        <th style="text-align: right">Opcion</th>
+                      </thead>
+                      <tbody>
+                        @forEach($menuCombos as $item)
+                        <tr>
+                          <td>{{$item->combo->nombre}}</td>
+                          <td style="text-align: right">
+                            <a href="{{route('deleteComboMenu',['id'=>$item->id])}}" class="btn btn-xs btn-danger">Elminiar</a>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
                   </div>
                   <!-- Body -->
               </div>

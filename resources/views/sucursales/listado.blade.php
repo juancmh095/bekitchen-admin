@@ -276,7 +276,7 @@
                       </div>
                     </td>
                     <td class="table-column-ps-0">
-                      <a class="d-flex align-items-center" href="/sucursales/registro">
+                      <a class="d-flex align-items-center" href="{{route('editarSucursal',['id'=>$sucursal->id])}}">
                         <div class="flex-shrink-0">
                           <div class="avatar avatar-circle">
                             <img class="avatar-img" src="{{asset('static/img/tienda.jpg')}}" alt="Image Description">

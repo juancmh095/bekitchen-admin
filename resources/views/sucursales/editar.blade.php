@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   @include('components.assets')
 </head>
 
@@ -60,7 +59,7 @@
             <!-- End Nav -->
           </div>
           <!-- End Page Header -->
-          <form action="{{route('registroSucursal')}}" method="post" enctype="multipart/form-data">
+          <form action="{{route('updateSucursal')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-lg-center">
               <div class="col-lg-9">
@@ -81,7 +80,7 @@
                       <div class="d-flex align-items-center">
                         <!-- Avatar -->
                         <label class="avatar avatar-xl avatar-circle avatar-uploader me-5" for="avatarUploader">
-                          <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('static/svg/brands/guideline-icon.svg')}}" alt="Image Description">
+                          <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('storage/'.$suc->logo)}}" alt="Image Description">
       
                           <input type="file" name="foto" class="js-file-attach avatar-uploader-input" id="avatarUploader" data-hs-file-attach-options='{
                                     "textTarget": "#avatarProjectSettingsImg",
@@ -98,11 +97,12 @@
                           </span>
                         </label>
                         <!-- End Avatar -->
-      
+                        
                         <button type="button" class="js-file-attach-reset-img btn btn-white">Eliminar</button>
                       </div>
                     </div>
                     <!-- End Form -->
+                    <input type="hidden" name="img" value="{{$suc->logo}}">
       
                     <!-- Form -->
                     <div class="mb-4">
@@ -112,7 +112,7 @@
                         <div class="input-group-prepend input-group-text">
                           <i class="bi-briefcase"></i>
                         </div>
-                        <input type="text" class="form-control" name="nombre" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
+                        <input type="text" class="form-control" name="nombre" id="nameSucursal" placeholder="Ingrese el nombre" value="{{$suc->nombre}}">
                       </div>
                     </div>
                     <!-- End Form -->
@@ -122,7 +122,7 @@
       
                     <!-- Quill -->
                     <div class="quill-custom">
-                      <textarea name="descripcion" id="" cols="30" rows="10" class="form-control"></textarea>
+                      <textarea name="descripcion" id="" cols="30" rows="10" class="form-control">{{$suc->descripcion}}</textarea>
                     </div>
                     <!-- End Quill -->
                   </div>
@@ -157,9 +157,10 @@
                             <div class="input-group-prepend input-group-text">
                               <i class="bi-globe"></i>
                             </div>
-                            <input type="text" class="form-control" name="direccion" id="pac-input" placeholder="Buscar Dirección" aria-label="Enter value here">
-                            <input type="hidden" name="lat" id="lat">
-                            <input type="hidden" name="lng" id="lng">
+                            <input type="text" class="form-control" name="direccion" id="pac-input" placeholder="Buscar Dirección" value="{{$suc->direccion}}" aria-label="Enter value here">
+                          
+                            <input type="hidden" name="lat" id="lat" value="{{$suc->lat}}">
+                            <input type="hidden" name="lng" id="lng" value="{{$suc->lng}}">
                           </div>
                         </div>
                         <!-- End Form -->
@@ -180,7 +181,7 @@
                               <div class="input-group-prepend input-group-text">
                                   <i class="bi-phone"></i>
                               </div>
-                              <input type="text" class="form-control" name="telefono" id="telefono" placeholder="+52" aria-label="Enter value here">
+                              <input type="text" class="form-control" name="telefono" id="telefono" value="{{$suc->telefono}}" placeholder="+52" aria-label="Enter value here">
                               </div>
                           </div>
                         <!-- End Form -->
@@ -200,20 +201,23 @@
                               <div class="input-group-prepend input-group-text">
                                   <i class="bi-envelope"></i>
                               </div>
-                              <input type="email" class="form-control" name="correo" id="correo" placeholder="@" aria-label="Enter value here">
+                              <input type="email" class="form-control" name="correo" id="correo" placeholder="@" value="{{$suc->correo}}" aria-label="Enter value here">
                               </div>
                           </div>
                         <!-- End Form -->
                         </div>
                         <!-- End Form -->
                       </div>
+                      <!-- End Col -->
+                      
+                      <!-- End Col -->
                     </div>
                     <!-- End Form Row -->
       
                     <div class="d-grid gap-2">
                       <!-- Check -->
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="tienda" id="tienda">
+                        <input class="form-check-input" type="checkbox" name="tienda" id="tienda" value="{{$suc->tienda}}" " @if($suc->tienda == 1) checked @endif>
                         <label class="form-check-label" for="tienda">
                           Recoger en tienda
                         </label>
@@ -222,17 +226,16 @@
       
                       <!-- Check -->
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="delivery" id="delivery">
+                        <input class="form-check-input" type="checkbox" name="delivery" id="delivery" value="{{$suc->delivery}}" @if($suc->delivery == 1) checked @endif>
                         <label class="form-check-label" for="delivery">
                           Delivery
                         </label>
                       </div>
                       <!-- End Check -->
                     </div>
-                    <div id="map" style="height: 100px"></div>
                   </div>
                   <!-- End Body -->
-      
+                  <input type="hidden" name="id" id="" value="{{$suc->id}}">
                   <!-- Footer -->
                   <div class="card-footer d-flex justify-content-end gap-3">
                     <button type="reset" class="btn btn-white">Cancelar</button>
@@ -290,8 +293,6 @@
       </main>
       <!-- ========== END MAIN CONTENT ========== -->
 
-   
-    
-    @include('components.assetstop');
+    @include('components.assetstop')
 </body>
 </html>

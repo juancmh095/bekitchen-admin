@@ -52,7 +52,7 @@
                   <div class="d-flex align-items-center">
                     <!-- Avatar -->
                     <label class="avatar avatar-xl avatar-circle avatar-uploader me-5" for="avatarUploader">
-                      <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('static/svg/brands/guideline-icon.svg')}}" alt="Image Description">
+                      <img id="avatarProjectSettingsImg" class="avatar-img" src="{{asset('storage/'.$producto->media)}}" alt="Image Description">
   
                       <input type="file" name="foto" class="js-file-attach avatar-uploader-input" id="avatarUploader" data-hs-file-attach-options='{
                                 "textTarget": "#avatarProjectSettingsImg",
@@ -209,7 +209,7 @@
                               "placeholder": "Select category"
                             }'>
                       <@foreach($categorias as $item)
-                        <option value="{{$item->nombre}}">{{$item->nombre}}</option>
+                        <option value="{{$item->nombre}}" @if($producto->categoria == $item->nombre) selected @endif>{{$item->nombre}}</option>
                       @endforeach
                     </select>
                   </div>

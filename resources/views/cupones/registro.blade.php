@@ -104,7 +104,7 @@
                 <td>{{$item->limite_fecha}}</td>   
                 <td>{{$item->canjes}}</td>
                 <td>
-                  <div class="btn-group" role="group">
+                  {{-- <div class="btn-group" role="group">
                     <a class="btn btn-white btn-sm" href="./ecommerce-product-details.html">
                       <i class="bi-pencil-fill me-1"></i> Editar
                     </a>
@@ -129,7 +129,7 @@
                       </div>
                     </div>
                     <!-- End Button Group -->
-                  </div>
+                  </div> --}}
                 </td>
               </tr>
               @endforeach

@@ -116,9 +116,16 @@ class CombosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        $data = Productos::all();
+        $combo = Combos::find($request['id']);
+        $combosProductos = CombosProductos::where('id_combo',$request['id'])->get();
+        foreach($combosProductos as $item){
+            $item->producto = Productos::find($item->id_producto);
+        }
+        return view('combos.editar',["productos"=>$data,"combo"=>$combo,"productosCombo"=>$combosProductos]);
     }
 
     /**
@@ -128,9 +135,61 @@ class CombosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        try {
+            //code...
+            $foto = $request['img'];
+            if($request->file('foto')!=null){
+                //obtenemos el campo file definido en el formulario
+                $file = $request->file('foto');
+                //indicamos que queremos guardar un nuevo archivo en el disco local
+                $foto = Storage::disk('public')->put('fotos', $file);
+            }
+            $productos = $request['producto'];
+            $precios = $request['precios'];
+            array_pop($productos);
+            array_pop($precios);
+            $total = 0;
+            foreach ($productos as $key => $value) {
+                # code...
+                if($precios[$key]){
+                    $total = $total + $precios[$key];
+                }else{
+                    $p = Productos::find($value);
+                    $total = $total + $p->precio;
+                }
+            }
+            //dd($total);
+            Combos::where('id',$request['id'])->update([
+                'nombre'=>$request['nombre'],
+                'banner'=>$foto,
+                'precio_total'=>$total,
+                'fecha_exp'=>$request['fecha'],
+            ]);
+            $combo = $request['id'];
+            //dd($combo->id);
+            $precio = 0;
+            foreach ($productos as $key => $value) {
+                if($precios[$key]){
+                    $precio = $precios[$key];
+                }else{
+                    $p = Productos::find($value);
+                    $precio = $p->precio;
+                }
+                CombosProductos::create([
+                    'id_combo'=>$combo,
+                    'id_producto'=>$value,
+                    'precio'=>$precio
+                ]);
+            }
+            $data = Combos::all();
+            return view('combos.combos',["combos"=>$data]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back();
+        }
     }
 
     /**
@@ -142,6 +201,20 @@ class CombosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function deleteProducto(Request $request)
+    {
+        //
+        CombosProductos::find($request['id'])->delete();
+        return back();
+    }
+
+    public function deleteCombo(Request $request)
+    {
+        //
+        Combos::find($request['id'])->delete();
+        return back();
     }
 
     public function combosApi()

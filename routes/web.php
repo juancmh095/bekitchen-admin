@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CombosController;
 use App\Http\Controllers\CuponesController;
 use App\Http\Controllers\MenusController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\SucursalController;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +53,9 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('home');
     Route::get('/sucursales/registro', [SucursalController::class, 'index']);
     Route::post('/sucursales/registro', [SucursalController::class, 'create'])->name('registroSucursal');
+    Route::post('/sucursales/update', [SucursalController::class, 'update'])->name('updateSucursal');
     Route::get('/sucursales', [SucursalController::class, 'store']);
+    Route::get('/sucursales/editar', [SucursalController::class, 'edit'])->name('editarSucursal');
     /* NEGOCIO */
     Route::get('/negocio/perfil', function () {
         return view('negocio.perfil');
@@ -81,10 +84,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/menus', [MenusController::class, 'store']);
     Route::get('/menus/registro', [MenusController::class,'index']);
     Route::post('/menus/registro', [MenusController::class,'create'])->name('registroMenu');
+    Route::post('/menus/registro', [MenusController::class,'create'])->name('registroMenu');
+    Route::get('/menus/editar', [MenusController::class,'edit'])->name('editarMenu');
+    Route::post('/menus/update', [MenusController::class,'update'])->name('updateMenu');
+    Route::get('/menus/dp', [MenusController::class,'deletePmenu'])->name('deleteProductoMenu');
+    Route::get('/menus/dc', [MenusController::class,'deleteCmenu'])->name('deleteComboMenu');
+    Route::get('/menus/delete', [MenusController::class,'deleteMenu'])->name('deleteMenu');
     /* COMBOS */
     Route::get('/combos', [CombosController::class,'store']);
     Route::get('/combos/registro', [CombosController::class,'index']);
     Route::post('/combos/registro/created', [CombosController::class,'create'])->name('registroCombo');
+    Route::get('/combos/registro/editar', [CombosController::class,'edit'])->name('editarCombo');
+    Route::post('/combos/registro/update', [CombosController::class,'update'])->name('updateCombo');
+    Route::post('/combos/registro/delete', [CombosController::class,'deleteCombo'])->name('eliminarCombo');
+    Route::get('/combos/registro/dp', [CombosController::class,'deleteProducto'])->name('deleteProductoCombo');
     /* CUPONES */
     Route::get('/cuponera', [CuponesController::class, 'index']);
     Route::post('/cuponera', [CuponesController::class, 'create'])->name('registroCupon');
@@ -92,6 +105,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/usuarios/registro', [UsuariosController::class, 'store']);
     Route::post('/usuarios/registro', [UsuariosController::class, 'created'])->name('registrarUsuario');
     Route::get('/usuarios', [UsuariosController::class, 'index']);
+    /* PEDIDOS */
+    Route::get('/pedidos', [PedidoController::class, 'index']);
+    Route::get('/pedidos/update', [PedidoController::class, 'update'])->name('updatePedido');
 
 
 });

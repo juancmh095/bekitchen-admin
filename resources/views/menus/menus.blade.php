@@ -156,7 +156,7 @@
                     </div>
                   </td>
                   <td class="table-column-ps-0">
-                    <a class="d-flex align-items-center" href="/menus/registro">
+                    <a class="d-flex align-items-center" href="{{route('editarMenu',['id'=>$menu->id])}}">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-lg" src="{{asset('static/img/logobk.jpeg')}}" alt="Image Description">
                       </div>
@@ -174,7 +174,7 @@
                   <td>{{$menu->created_at}}</td>   
                   <td>
                     <div class="btn-group" role="group">
-                      <a class="btn btn-white btn-sm" href="./ecommerce-product-details.html">
+                      <a class="btn btn-white btn-sm" href="{{route('editarMenu',['id'=>$menu->id])}}">
                         <i class="bi-pencil-fill me-1"></i> Editar
                       </a>
   
@@ -183,7 +183,7 @@
                         <button type="button" class="btn btn-white btn-icon btn-sm dropdown-toggle dropdown-toggle-empty" id="productsEditDropdown1" data-bs-toggle="dropdown" aria-expanded="false"></button>
   
                         <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="productsEditDropdown1">
-                          <a class="dropdown-item" href="#">
+                          <a class="dropdown-item" href="{{route('deleteMenu',['id'=>$menu->id])}}">
                             <i class="bi-trash dropdown-item-icon"></i> Eliminar
                           </a>
                         </div>

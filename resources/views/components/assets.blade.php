@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="{{asset('static/vendor/quill/dist/quill.snow.css')}}">
 
 <!-- CSS Front Template -->
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCokAttkGWYIvSnXyI59rOXSC8XKbuskI&libraries=places&signed_in=true&callback=initMap" async defer></script>
 <link rel="preload" href="{{ asset('static/css/theme.min.css') }}" data-hs-appearance="default" as="style">
 <link rel="preload" href="{{ asset('static/css/theme-dark.min.css') }}" data-hs-appearance="dark" as="style">
 

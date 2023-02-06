@@ -51,8 +51,8 @@ class ProductosController extends Controller
                 'etiquetas'=>$request['tagsLabel'], 
                 'media'=>$foto, 
                 'id_negocio'=>$request->user()->id_negocio,
-                'top'=>$request['top'],
-                'mas_comprados'=>$request['mas_comprados'],
+                'top'=>isset($request['top'])?1:0,
+                'mas_comprados'=>isset($request['mas_comprados'])?1:0,
             ]);
 
             return view('productos.registro',["success"=>1]);

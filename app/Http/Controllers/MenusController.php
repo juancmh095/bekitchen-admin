@@ -117,9 +117,24 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        $productos = Productos::where('id_negocio',$request->user()->id_negocio)->get();
+        $combos = Combos::all();
+        $sucursales = Sucursal::all();
+        $menu = Menus::find($request['id']);
+        $productoMenu = MenusProductos::where('id_menu',$request['id'])->get();
+        $combosMenu = MenusCombos::where('id_menu',$request['id'])->get();
+
+        foreach($productoMenu as $item){
+            $item->producto = Productos::find($item->id_producto);
+        }
+
+        foreach($combosMenu as $item){
+            $item->combo = Combos::find($item->id_combo);
+        }
+        return view('menus.editar',['productos'=>$productos,'combos'=>$combos,'sucursales'=>$sucursales,'menu'=>$menu,'menuCombos'=>$combosMenu,'menuProductos'=>$productoMenu,'success'=>0]);
     }
 
     /**
@@ -129,9 +144,71 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        Menus::where('id',$request['id'])->update([
+            'nombre'=>$request['nombre'],
+        ]);
+
+        $menu = $request['id'];
+        $productos = $request['producto'];
+        $combos = $request['combos'];
+        $sucursales = $request['sucursales'];
+
+        if(count($productos)>0 && $productos[0] != null){
+            foreach($productos as $producto){
+                MenusProductos::create([
+                    'id_menu'=>$menu,
+                    'id_producto'=>$producto
+                ]);
+            }
+        }
+
+        if(count($combos)>0 && $combos[0] != null){
+            foreach($combos as $item){
+                MenusCombos::create([
+                    'id_menu'=>$menu,
+                    'id_combo'=>$item
+                ]);
+            }
+        }
+
+        if(count($sucursales)>0 && $sucursales[0] != null){
+            foreach($sucursales as $item){
+                MenusSucursal::create([
+                    'id_menu'=>$menu,
+                    'id_sucursal'=>$item
+                ]);
+            }
+        }
+
+        $menus = Menus::all();
+        return view('menus.menus',['menus'=>$menus]);
+    }
+
+    public function deletePmenu(Request $request)
+    {
+        //
+        MenusProductos::where('id',$request['id'])->delete();
+        return back();
+    }
+
+    public function deleteMenu(Request $request)
+    {
+        //
+        $sucursales = Sucursal::where('menu',$request['id'])->get();
+        if(count($sucursales)==0){
+            Menus::where('id',$request['id'])->delete();
+        }
+        return back();
+    }
+
+    public function deleteCmenu(Request $request)
+    {
+        //
+        MenusCombos::where('id',$request['id'])->delete();
+        return back();
     }
 
     /**

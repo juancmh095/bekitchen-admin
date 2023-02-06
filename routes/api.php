@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CombosController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\UsuariosController;
@@ -28,5 +29,7 @@ Route::get('/productos/{negocio}', [ProductosController::class, 'apiProductos'])
 Route::get('/combos', [CombosController::class, 'combosApi']);
 Route::get('/combos/{negocio}', [CombosController::class, 'combosApiId']);
 Route::post('/usuarios', [UsuariosController::class, 'apiUsuarios']);
+Route::post('/pedidos', [PedidoController::class, 'apiPedidos']);
+Route::get('/pedidos/{id}', [PedidoController::class, 'getPedidos']);
 
 Route::post('/login', [UsuariosController::class, 'apiLogin']);

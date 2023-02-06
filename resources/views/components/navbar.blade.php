@@ -46,7 +46,7 @@
               <div class="nav-item">
                 <a class="nav-link " href="/negocio/perfil" data-placement="left">
                   <i class="bi-house-door nav-icon"></i>
-                  <span class="nav-link-title">Administrar</span>
+                  <span class="nav-link-title">Perfil</span>
                 </a>
               </div>
               <div class="nav-item">
@@ -85,21 +85,21 @@
                   <a class="nav-link " href="/productos/registro">Registrar producto</a>
                   <a class="nav-link " href="/categorias">Categorias</a>
                   <a class="nav-link " href="/productos">Listado</a>
-                  <div class="nav-item">
-                    <a class="nav-link dropdown-toggle " href="#combos" role="button" data-bs-toggle="collapse" data-bs-target="#combos" aria-expanded="false" aria-controls="combos">
-                      <i class="bi-box-fill nav-icon"></i>
-                      <span class="nav-link-title">Combos</span>
-                    </a>
-    
-                    <div id="combos" class="nav-collapse collapse " data-bs-parent="#combos">
-                      <a class="nav-link " href="/combos/registro">Registrar</a>
-                      <a class="nav-link " href="/combos">Listado</a>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
             <!-- End Collapse -->
+            <div class="nav-item">
+              <a class="nav-link dropdown-toggle " href="#combos" role="button" data-bs-toggle="collapse" data-bs-target="#combos" aria-expanded="false" aria-controls="combos">
+                <i class="bi-box-fill nav-icon"></i>
+                <span class="nav-link-title">Combos</span>
+              </a>
+
+              <div id="combos" class="nav-collapse collapse " data-bs-parent="#combos">
+                <a class="nav-link " href="/combos/registro">Registrar</a>
+                <a class="nav-link " href="/combos">Listado</a>
+              </div>
+            </div>
 
             <span class="dropdown-header mt-4">Usuarios</span>
             <small class="bi-three-dots nav-subtitle-replacer"></small>
@@ -148,9 +148,9 @@
             <div id="navbarVerticalMenuPagesMenu">
               <!-- Collapse -->
               <div class="nav-item">
-                <a class="nav-link " href="/negocio/perfil" data-placement="left">
+                <a class="nav-link " href="/pedidos" data-placement="left">
                   <i class="bi-journals nav-icon"></i>
-                  <span class="nav-link-title">Reportes</span>
+                  <span class="nav-link-title">Pedidos</span>
                 </a>
               </div>
             </div>

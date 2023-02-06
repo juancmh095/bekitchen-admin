@@ -19,7 +19,7 @@ class SucursalController extends Controller
     {
         //
         $menus = Menus::all();
-        return view('sucursales.registro',['menus'=>$menus,'success'=>2]);
+        return view('sucursales.registro',['menus'=>$menus,'success'=>0]);
     }
 
     /**
@@ -45,12 +45,12 @@ class SucursalController extends Controller
                 'direccion'=>$request['direccion'], 
                 'telefono'=>$request['telefono'], 
                 'correo'=>$request['correo'], 
-                'menu'=>$request['menu'], 
-                'lat'=>0, 
-                'lng'=>0, 
+                'menu'=>0, 
+                'lat'=>$request['lat'], 
+                'lng'=>$request['lng'], 
                 'delivery'=>isset($request['delivery']), 
                 'tienda'=>isset($request['tienda']), 
-                'id_negocio'=>18
+                'id_negocio'=>$request->user()->id_negocio
             ]);
             $sucursal = Sucursal::latest('id')->first();
             MenusSucursal::create([
@@ -64,7 +64,7 @@ class SucursalController extends Controller
             //throw $th;
             dd($th);
             $menus = Menus::all();
-            return view('sucursales.registro',['menus'=>$menus,'success'=>0]);
+            return view('sucursales.registro',['menus'=>$menus,'success'=>2]);
         }
     }
 
@@ -98,9 +98,13 @@ class SucursalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        $sucursal = Sucursal::find($request['id']);
+        //dd($sucursal);
+        $menus = Menus::all();
+        return view('sucursales.editar',['menus'=>$menus,'success'=>0,'suc'=>$sucursal]);
     }
 
     /**
@@ -110,9 +114,42 @@ class SucursalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        try {
+            $foto = $request['img'];
+            if($request->file('foto')!=null){
+                //obtenemos el campo file definido en el formulario
+                $file = $request->file('foto');
+                //indicamos que queremos guardar un nuevo archivo en el disco local
+                $foto = Storage::disk('public')->put('fotos', $file);
+            }
+            Sucursal::where('id',$request['id'])->update([
+                'logo'=>$foto, 
+                'nombre'=>$request['nombre'], 
+                'direccion'=>$request['direccion'], 
+                'telefono'=>$request['telefono'], 
+                'correo'=>$request['correo'], 
+                'menu'=>0,
+                'lat'=>$request['lat'], 
+                'lng'=>$request['lng'], 
+                'delivery'=>isset($request['delivery']), 
+                'tienda'=>isset($request['tienda']),
+            ]);
+            
+            MenusSucursal::create([
+                'id_menu'=>$request['menu'],
+                'id_sucursal'=>$request['id']
+            ]);
+            //code...
+            $sucursales = Sucursal::all();
+            return view('sucursales.listado',['sucursales'=>$sucursales]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            $sucursales = Sucursal::all();
+            return view('sucursales.listado',['sucursales'=>$sucursales,'success'=>2]);;
+        }
     }
 
     /**
