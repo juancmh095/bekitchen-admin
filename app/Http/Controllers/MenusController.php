@@ -72,6 +72,10 @@ class MenusController extends Controller
                         'id_menu'=>$menu->id,
                         'id_sucursal'=>$item
                     ]);
+
+                    Sucursal::find($item)->update([
+                        'menu'=>$menu->id
+                    ]);
                 }
             }
 
@@ -179,6 +183,9 @@ class MenusController extends Controller
                 MenusSucursal::create([
                     'id_menu'=>$menu,
                     'id_sucursal'=>$item
+                ]);
+                Sucursal::find($item)->update([
+                    'menu'=>$menu
                 ]);
             }
         }
