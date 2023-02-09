@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/usuarios/registro', [UsuariosController::class, 'created'])->name('registrarUsuario');
     Route::get('/usuarios', [UsuariosController::class, 'index']);
     /* PEDIDOS */
-    Route::get('/pedidos', [PedidoController::class, 'index']);
+    Route::get('/pedidos', [PedidoController::class, 'index'])->name('/pedidos');
     Route::get('/pedidos/update', [PedidoController::class, 'update'])->name('updatePedido');
 
 

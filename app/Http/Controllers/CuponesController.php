@@ -93,6 +93,18 @@ class CuponesController extends Controller
         //
     }
 
+    public function getCuponList()
+    {
+        //
+        return Cupones::all();
+    }
+
+    public function getCupon($id)
+    {
+        //
+        return Cupones::where('codigo',$id)->get();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
