@@ -29,15 +29,27 @@ class CuponesController extends Controller
         //
         try {
             //code...
-            Cupones::create([
-                'porcentaje'=>$request['porcentaje'],
-                'importe'=>$request['importe'], 
-                'limite_fecha'=>$request['fecha'],
-                'canjes'=>$request['canjes'],
-                'codigo'=>$request['nombre'],
-                'importe_minimo'=>$request['importe_minimo'],
-                'id_negocio'=> $request->user()->id_negocio
-            ]);
+            if($request['id'] == 0){
+                Cupones::create([
+                    'porcentaje'=>$request['porcentaje'],
+                    'importe'=>$request['importe'], 
+                    'limite_fecha'=>$request['fecha'],
+                    'canjes'=>$request['canjes'],
+                    'codigo'=>$request['nombre'],
+                    'importe_minimo'=>$request['importe_minimo'],
+                    'id_negocio'=> $request->user()->id_negocio
+                ]);
+            }else{
+                Cupones::where('id',$request['id'])->update([
+                    'porcentaje'=>$request['porcentaje'],
+                    'importe'=>$request['importe'], 
+                    'limite_fecha'=>$request['fecha'],
+                    'canjes'=>$request['canjes'],
+                    'codigo'=>$request['nombre'],
+                    'importe_minimo'=>$request['importe_minimo'],
+                    'id_negocio'=> $request->user()->id_negocio
+                ]);
+            }
             $data = Cupones::where('id_negocio',$request->user()->id_negocio)->get();
             return view('cupones.registro',['cupones'=>$data,'success'=>1]);
         } catch (\Throwable $th) {
@@ -92,6 +104,14 @@ class CuponesController extends Controller
     {
         //
     }
+
+    public function deleteCupon(Request $request)
+    {
+        //
+        Cupones::where('id',$request['id'])->delete();
+        return back();
+    }
+
 
     public function getCuponList()
     {

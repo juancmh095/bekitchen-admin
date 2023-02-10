@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth']], function () {
     /* CUPONES */
     Route::get('/cuponera', [CuponesController::class, 'index']);
     Route::post('/cuponera', [CuponesController::class, 'create'])->name('registroCupon');
+    Route::get('/cupon/delete', [CuponesController::class,'deleteCupon'])->name('deleteCupon');
     /* USUARIOS */
     Route::get('/usuarios/registro', [UsuariosController::class, 'store']);
     Route::post('/usuarios/registro', [UsuariosController::class, 'created'])->name('registrarUsuario');

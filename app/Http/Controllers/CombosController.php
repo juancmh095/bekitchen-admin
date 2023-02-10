@@ -221,6 +221,14 @@ class CombosController extends Controller
     {
         //
         $data = Combos::all();
+        foreach($data as $item){
+            $pc = CombosProductos::where('id_combo',$item->id)->get();
+            foreach($pc as $p){
+                $pd = Productos::find($p->id_producto);
+                $p->producto = $pd;
+            }
+            $item->productos = $pc;
+        }
         return $data;
     }
     public function combosApiId($id)

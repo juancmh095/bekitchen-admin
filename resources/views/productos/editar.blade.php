@@ -225,13 +225,13 @@
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="top" @if($producto->top == 1) checked @endif>
                   <label class="form-check-label" for="flexCheckDefault">
-                    Top de ventas
+                    Nuestras Sugerencias
                   </label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="flexCheckChecked" name="mas_comprados" @if($producto->mas_comprados == 1) checked @endif>
                   <label class="form-check-label" for="flexCheckChecked">
-                    Mas vendidos
+                    Más pedidos
                   </label>
                 </div>
               </div>

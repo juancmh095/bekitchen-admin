@@ -104,8 +104,8 @@
                 <td>{{$item->limite_fecha}}</td>   
                 <td>{{$item->canjes}}</td>
                 <td>
-                  {{-- <div class="btn-group" role="group">
-                    <a class="btn btn-white btn-sm" href="./ecommerce-product-details.html">
+                  <div class="btn-group" role="group">
+                    <a class="btn btn-white btn-sm" onclick="viewCupon({{$item}})">
                       <i class="bi-pencil-fill me-1"></i> Editar
                     </a>
 
@@ -114,22 +114,13 @@
                       <button type="button" class="btn btn-white btn-icon btn-sm dropdown-toggle dropdown-toggle-empty" id="productsEditDropdown1" data-bs-toggle="dropdown" aria-expanded="false"></button>
 
                       <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="productsEditDropdown1">
-                        <a class="dropdown-item" href="#">
-                          <i class="bi-trash dropdown-item-icon"></i> Delete
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <i class="bi-archive dropdown-item-icon"></i> Archive
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <i class="bi-upload dropdown-item-icon"></i> Publish
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <i class="bi-x-lg dropdown-item-icon"></i> Unpublish
+                        <a class="dropdown-item" href="{{route('deleteCupon',['id'=>$item->id])}}">
+                          <i class="bi-trash dropdown-item-icon"></i> Eliminar
                         </a>
                       </div>
                     </div>
                     <!-- End Button Group -->
-                  </div> --}}
+                  </div>
                 </td>
               </tr>
               @endforeach
@@ -161,9 +152,10 @@
         <form action="{{route('registroCupon')}}" method="POST">
           @csrf
           <div class="modal-body">
-            <label for="eventTitleLabel" class="visually-hidden form-label">Nombre</label>
-            <textarea id="eventTitleLabel" class="form-control form-control-title" name="nombre" placeholder="Agregar Codigo"></textarea>
+            <label for="codigo" class="visually-hidden form-label">Nombre</label>
+            <textarea id="codigo" class="form-control form-control-title" name="nombre" placeholder="Agregar Codigo"></textarea>
   
+            <input type="hidden" id="id" name="id" value="0">
             
             <!-- End Row -->
             <div class="row mb-4">
@@ -177,7 +169,7 @@
   
               <div class="col-sm">
                 <!-- Flatpickr -->
-                <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" name="porcentaje" placeholder="%">
+                <input type="text" id="porcentaje" class="flatpickr-custom form-control mb-2" name="porcentaje" placeholder="%">
                 <!-- End Flatpickr -->
               </div>
               <!-- End Col -->
@@ -196,7 +188,7 @@
   
               <div class="col-sm">
                 <!-- Flatpickr -->
-                <input type="text" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" name="importe" placeholder="$0,00">
+                <input type="text" id="importe" class="flatpickr-custom form-control mb-2" name="importe" placeholder="$0,00">
                 <!-- End Flatpickr -->
               </div>
               <!-- End Col -->
@@ -216,7 +208,7 @@
                 <label for="eventDateRangeLabel" class="visually-hidden form-label">Date</label>
   
                 <!-- Flatpickr -->
-                <input type="date" name="fecha" id="eventDateRangeLabel" class="flatpickr-custom form-control mb-2" placeholder="Select dates" data-hs-flatpickr-options='{
+                <input type="date" name="fecha" id="limite_fecha" class="flatpickr-custom form-control mb-2" placeholder="Select dates" data-hs-flatpickr-options='{
                          "dateFormat": "m/d/Y",
                          "mode": "range",
                          "minDate": "12/01/2020"
@@ -239,7 +231,7 @@
   
               <div class="col-sm">
                 <!-- Flatpickr -->
-                <input type="number" id="eventDateRangeLabel" name="canjes" class="flatpickr-custom form-control mb-2" placeholder="000">
+                <input type="number" id="canjes" name="canjes" class="flatpickr-custom form-control mb-2" placeholder="000">
                 <!-- End Flatpickr -->
               </div>
               <!-- End Col -->
@@ -257,7 +249,7 @@
   
               <div class="col-sm">
                 <!-- Flatpickr -->
-                <input type="number" id="eventDateRangeLabel" name="importe_minimo" class="flatpickr-custom form-control mb-2" placeholder="0">
+                <input type="number" id="importe_minimo" name="importe_minimo" class="flatpickr-custom form-control mb-2" placeholder="0">
                 <!-- End Flatpickr -->
               </div>
               <!-- End Col -->
@@ -269,7 +261,7 @@
           <!-- Footer -->
           <div class="modal-footer gap-3">
             <button type="reset" id="discardFormt" class="btn btn-white" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" id="processEvent" class="btn btn-primary">Registrar cupon</button>
+            <button type="submit" id="processEvent" class="btn btn-primary">Guardar</button>
           </div>
           <!-- End Footer -->
 
@@ -280,3 +272,18 @@
   </div>
 
   <!-- End Modal -->
+
+  <script>
+    function viewCupon(item){
+      console.log(item);
+      console.log(Object.keys(item))
+      var arr = Object.keys(item);
+      const myModal = new bootstrap.Modal('#addEventToCalendarModal');
+      myModal.show();
+      arr.forEach(element => {
+        let id = '#'+element;
+        console.log(element,item[element]);
+        document.querySelector(id).value = item[element];
+      });
+    }
+  </script>

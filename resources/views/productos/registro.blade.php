@@ -224,13 +224,13 @@
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="top">
                   <label class="form-check-label" for="flexCheckDefault">
-                    Top de ventas
+                    Nuestras Sugerencias
                   </label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="flexCheckChecked" name="mas_comprados">
                   <label class="form-check-label" for="flexCheckChecked">
-                    Mas vendidos
+                    Más pedidos
                   </label>
                 </div>
               </div>
