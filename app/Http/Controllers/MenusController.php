@@ -66,6 +66,9 @@ class MenusController extends Controller
                 }
             }
 
+            Sucursal::find($item)->update([
+                'menu'=>$menu->id
+            ]);
             if(count($sucursales)>0 && $sucursales[0] != null){
                 foreach($sucursales as $item){
                     MenusSucursal::create([
@@ -73,9 +76,6 @@ class MenusController extends Controller
                         'id_sucursal'=>$item
                     ]);
 
-                    Sucursal::find($item)->update([
-                        'menu'=>$menu->id
-                    ]);
                 }
             }
 

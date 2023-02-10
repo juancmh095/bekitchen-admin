@@ -102,7 +102,7 @@ class CuponesController extends Controller
     public function getCupon($id)
     {
         //
-        return Cupones::where('codigo',$id)->get();
+        return Cupones::where('codigo',$id)->limit(1)->get();
     }
 
     /**

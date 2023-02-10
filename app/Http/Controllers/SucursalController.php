@@ -53,10 +53,7 @@ class SucursalController extends Controller
                 'id_negocio'=>$request->user()->id_negocio
             ]);
             $sucursal = Sucursal::latest('id')->first();
-            MenusSucursal::create([
-                'id_menu'=>$request['menu'],
-                'id_sucursal'=>$sucursal->id
-            ]);
+            
             //code...
             $menus = Menus::all();
             return view('sucursales.registro',['menus'=>$menus,'success'=>1]);
@@ -138,10 +135,7 @@ class SucursalController extends Controller
                 'tienda'=>isset($request['tienda']),
             ]);
             
-            MenusSucursal::create([
-                'id_menu'=>$request['menu'],
-                'id_sucursal'=>$request['id']
-            ]);
+            
             //code...
             $sucursales = Sucursal::all();
             return view('sucursales.listado',['sucursales'=>$sucursales]);
