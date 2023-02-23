@@ -111,8 +111,9 @@
                                     }' required>
                               <option value="lb">lb</option>
                               <option value="oz">oz</option>
-                              <option value="kg" selected>kg</option>
+                              <option value="kg">kg</option>
                               <option value="g">g</option>
+                              <option value="Pz" selected>Pz</option>
                             </select>
                           </div>
                           <!-- End Select -->

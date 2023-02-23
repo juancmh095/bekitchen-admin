@@ -32,6 +32,7 @@ class SucursalController extends Controller
         //
         try {
             $foto = "";
+            //dd($request);
             if($request->file('foto')!=null){
                 //obtenemos el campo file definido en el formulario
                 $file = $request->file('foto');
@@ -50,6 +51,13 @@ class SucursalController extends Controller
                 'lng'=>$request['lng'], 
                 'delivery'=>isset($request['delivery']), 
                 'tienda'=>isset($request['tienda']), 
+                'lunes'=> json_encode($request['lunes']),
+                'martes'=> json_encode($request['martes']),
+                'miercoles'=> json_encode($request['miercoles']),
+                'jueves'=> json_encode($request['jueves']),
+                'viernes'=> json_encode($request['viernes']),
+                'sabado'=> json_encode($request['sabado']),
+                'domingo'=> json_encode($request['domingo']),
                 'id_negocio'=>$request->user()->id_negocio
             ]);
             $sucursal = Sucursal::latest('id')->first();
@@ -100,6 +108,13 @@ class SucursalController extends Controller
         //
         $sucursal = Sucursal::find($request['id']);
         //dd($sucursal);
+        $sucursal->lunes = json_decode($sucursal->lunes);
+        $sucursal->martes = json_decode($sucursal->martes);
+        $sucursal->miercoles = json_decode($sucursal->miercoles);
+        $sucursal->jueves = json_decode($sucursal->jueves);
+        $sucursal->viernes = json_decode($sucursal->viernes);
+        $sucursal->sabado = json_decode($sucursal->sabado);
+        $sucursal->domingo = json_decode($sucursal->domingo);
         $menus = Menus::all();
         return view('sucursales.editar',['menus'=>$menus,'success'=>0,'suc'=>$sucursal]);
     }
@@ -133,6 +148,13 @@ class SucursalController extends Controller
                 'lng'=>$request['lng'], 
                 'delivery'=>isset($request['delivery']), 
                 'tienda'=>isset($request['tienda']),
+                'lunes'=> json_encode($request['lunes']),
+                'martes'=> json_encode($request['martes']),
+                'miercoles'=> json_encode($request['miercoles']),
+                'jueves'=> json_encode($request['jueves']),
+                'viernes'=> json_encode($request['viernes']),
+                'sabado'=> json_encode($request['sabado']),
+                'domingo'=> json_encode($request['domingo']),
             ]);
             
             

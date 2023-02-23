@@ -135,6 +135,167 @@
                   <!-- End Footer -->
                 </div>
                 <!-- End Card -->
+
+                <!-- Card -->
+                <div class="card card-lg mb-3 mb-lg-5">
+                  <!-- Header -->
+                  <div class="card-header">
+                    <h4 class="card-header-title">Horario de Atencion</h4>
+                  </div>
+                  <!-- End Header -->
+      
+                  <!-- Body -->
+                  <div class="card-body">
+      
+                    <div class="row">
+                      <table class="table">
+                        <thead>
+                          <th>Dia</th>
+                          <th>Inicio</th>
+                          <th>Fin</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Lunes</td>
+                            @if($suc->lunes && count($suc->lunes)>0)
+                              <td>
+                                <input type="time" name="lunes[]" class="form-control" value="{{$suc->lunes[0]}}">
+                              </td>
+                              <td>
+                                <input type="time" name="lunes[]" class="form-control" value="{{$suc->lunes[1]}}">
+                              </td>
+                            @else
+                              <td>
+                                <input type="time" name="lunes[]" class="form-control">
+                              </td>
+                              <td>
+                                <input type="time" name="lunes[]" class="form-control">
+                              </td>
+                            @endif
+                          </tr>
+                          <tr>
+                            <td>Martes</td>
+                            @if($suc->martes && count($suc->martes)>0)
+                              <td>
+                                <input type="time" name="martes[]" class="form-control" value="{{$suc->martes[0]}}">
+                              </td>
+                              <td>
+                                <input type="time" name="martes[]" class="form-control" value="{{$suc->martes[1]}}">
+                              </td>
+                            @else
+                              <td>
+                                <input type="time" name="martes[]" class="form-control">
+                              </td>
+                              <td>
+                                <input type="time" name="martes[]" class="form-control">
+                              </td>
+                            @endif
+                          </tr>
+                          <tr>
+                            <td>Miercoles</td>
+                            @if($suc->miercoles && count($suc->miercoles)>0)
+                              <td>
+                                <input type="time" name="miercoles[]" class="form-control" value="{{$suc->miercoles[0]}}">
+                              </td>
+                              <td>
+                                <input type="time" name="miercoles[]" class="form-control" value="{{$suc->miercoles[1]}}">
+                              </td>
+                            @else
+                              <td>
+                                <input type="time" name="miercoles[]" class="form-control">
+                              </td>
+                              <td>
+                                <input type="time" name="miercoles[]" class="form-control">
+                              </td>
+                            @endif
+                          </tr>
+                          <tr>
+                            <td>Jueves</td>
+                            @if($suc->jueves && count($suc->jueves)>0)
+                              <td>
+                                <input type="time" name="jueves[]" class="form-control" value="{{$suc->jueves[0]}}">
+                              </td>
+                              <td>
+                                <input type="time" name="jueves[]" class="form-control" value="{{$suc->jueves[1]}}">
+                              </td>
+                            @else
+                              <td>
+                                <input type="time" name="jueves[]" class="form-control">
+                              </td>
+                              <td>
+                                <input type="time" name="jueves[]" class="form-control">
+                              </td>
+                            @endif
+                          </tr>
+                          <tr>
+                            <td>Viernes</td>
+                            @if($suc->viernes && count($suc->viernes)>0)
+                              <td>
+                                <input type="time" name="viernes[]" class="form-control" value="{{$suc->viernes[0]}}">
+                              </td>
+                              <td>
+                                <input type="time" name="viernes[]" class="form-control" value="{{$suc->viernes[1]}}">
+                              </td>
+                            @else
+                              <td>
+                                <input type="time" name="viernes[]" class="form-control">
+                              </td>
+                              <td>
+                                <input type="time" name="viernes[]" class="form-control">
+                              </td>
+                            @endif
+                          </tr>
+                          <tr>
+                            <td>Sabado</td>
+                            @if($suc->sabado && count($suc->sabado)>0)
+                              <td>
+                                <input type="time" name="sabado[]" class="form-control" value="{{$suc->sabado[0]}}">
+                              </td>
+                              <td>
+                                <input type="time" name="sabado[]" class="form-control" value="{{$suc->sabado[1]}}">
+                              </td>
+                            @else
+                              <td>
+                                <input type="time" name="sabado[]" class="form-control">
+                              </td>
+                              <td>
+                                <input type="time" name="sabado[]" class="form-control">
+                              </td>
+                            @endif
+                          </tr>
+                          <tr>
+                            <td>Domingos</td>
+                            @if($suc->domingo && count($suc->domingo)>0)
+                              <td>
+                                <input type="time" name="domingo[]" class="form-control" value="{{$suc->domingo[0]}}">
+                              </td>
+                              <td>
+                                <input type="time" name="domingo[]" class="form-control" value="{{$suc->domingo[1]}}">
+                              </td>
+                            @else
+                              <td>
+                                <input type="time" name="domingo[]" class="form-control">
+                              </td>
+                              <td>
+                                <input type="time" name="domingo[]" class="form-control">
+                              </td>
+                            @endif
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- End Form Row -->
+      
+                    
+                    
+                  </div>
+                  <!-- End Body -->
+      
+                  <!-- Footer -->
+                  
+                  <!-- End Footer -->
+                </div>
+                <!-- End Card -->
       
                 <!-- Card -->
                 <div class="card card-lg">
@@ -244,6 +405,8 @@
                   <!-- End Footer -->
                 </div>
                 <!-- End Card -->
+
+                
               </div>
               <!-- End Col -->
             </div>

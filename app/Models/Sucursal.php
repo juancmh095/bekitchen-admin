@@ -12,7 +12,7 @@ class Sucursal extends Model
     protected $table = 'sucursales';
 
     protected $fillable = [
-        'logo', 'nombre', 'direccion', 'telefono', 'correo', 'menu', 'lat', 'lng', 'delivery', 'tienda', 'id_negocio'
+        'logo', 'nombre', 'direccion', 'telefono', 'correo', 'menu', 'lat', 'lng', 'delivery', 'tienda', 'id_negocio','domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'
     ];
 
     public function sucursal()

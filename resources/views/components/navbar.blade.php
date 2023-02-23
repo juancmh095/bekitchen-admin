@@ -33,6 +33,20 @@
               </a>
             </div>
             <!-- End Collapse -->
+
+            <span class="dropdown-header mt-4">Administracion</span>
+            <small class="bi-three-dots nav-subtitle-replacer"></small>
+
+            <div id="navbarVerticalMenuPagesMenu">
+              <!-- Collapse -->
+              <div class="nav-item">
+                <a class="nav-link " href="/pedidos" data-placement="left">
+                  <i class="bi-journals nav-icon"></i>
+                  <span class="nav-link-title">Pedidos</span>
+                </a>
+              </div>
+            </div>
+            <!-- End Collapse -->
             
             <span class="dropdown-header mt-4">Negocio</span>
             <small class="bi-three-dots nav-subtitle-replacer"></small>
@@ -142,19 +156,7 @@
             </div>
             <!-- End Collapse -->
 
-            <span class="dropdown-header mt-4">Administracion</span>
-            <small class="bi-three-dots nav-subtitle-replacer"></small>
-
-            <div id="navbarVerticalMenuPagesMenu">
-              <!-- Collapse -->
-              <div class="nav-item">
-                <a class="nav-link " href="/pedidos" data-placement="left">
-                  <i class="bi-journals nav-icon"></i>
-                  <span class="nav-link-title">Pedidos</span>
-                </a>
-              </div>
-            </div>
-            <!-- End Collapse -->
+            
             
           </div>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CombosController;
 use App\Http\Controllers\CuponesController;
 use App\Http\Controllers\MenusController;
+use App\Http\Controllers\NegocioController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\SucursalController;
@@ -57,9 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/sucursales', [SucursalController::class, 'store']);
     Route::get('/sucursales/editar', [SucursalController::class, 'edit'])->name('editarSucursal');
     /* NEGOCIO */
-    Route::get('/negocio/perfil', function () {
-        return view('negocio.perfil');
-    });
+    Route::get('/negocio/perfil', [NegocioController::class, 'edit']);
+    Route::post('/negocio/perfil', [NegocioController::class, 'update'])->name('updateNegocio');
     /* PRODUCTOS */
     Route::get('/productos', [ProductosController::class,'index']);
     

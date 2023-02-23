@@ -137,6 +137,104 @@
                 <!-- End Card -->
       
                 <!-- Card -->
+                <div class="card card-lg mb-3 mb-lg-5">
+                  <!-- Header -->
+                  <div class="card-header">
+                    <h4 class="card-header-title">Horario de Atencion</h4>
+                  </div>
+                  <!-- End Header -->
+      
+                  <!-- Body -->
+                  <div class="card-body">
+      
+                    <div class="row">
+                      <table class="table">
+                        <thead>
+                          <th>Dia</th>
+                          <th>Inicio</th>
+                          <th>Fin</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Lunes</td>
+                            <td>
+                              <input type="time" name="lunes[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="time" name="lunes[]" class="form-control">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Martes</td>
+                            <td>
+                              <input type="time" name="martes[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="time" name="martes[]" class="form-control">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Miercoles</td>
+                            <td>
+                              <input type="time" name="miercoles[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="time" name="miercoles[]" class="form-control">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Jueves</td>
+                            <td>
+                              <input type="time" name="jueves[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="time" name="jueves[]" class="form-control">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Viernes</td>
+                            <td>
+                              <input type="time" name="viernes[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="time" name="viernes[]" class="form-control">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Sabado</td>
+                            <td>
+                              <input type="time" name="sabado[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="time" name="sabado[]" class="form-control">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Domingos</td>
+                            <td>
+                              <input type="time" name="domingo[]" class="form-control">
+                            </td>
+                            <td>
+                              <input type="time" name="domingo[]" class="form-control">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- End Form Row -->
+      
+                    
+                    
+                  </div>
+                  <!-- End Body -->
+      
+                  <!-- Footer -->
+                  
+                  <!-- End Footer -->
+                </div>
+                <!-- End Card -->
+
+                <!-- Card -->
                 <div class="card card-lg">
                   <!-- Header -->
                   <div class="card-header">
@@ -241,6 +339,7 @@
                   <!-- End Footer -->
                 </div>
                 <!-- End Card -->
+                
               </div>
               <!-- End Col -->
             </div>

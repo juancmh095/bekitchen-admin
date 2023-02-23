@@ -121,6 +121,8 @@ class ProductosController extends Controller
                 $file = $request->file('foto');
                 //indicamos que queremos guardar un nuevo archivo en el disco local
                 $foto = Storage::disk('public')->put('fotos', $file);
+            }else{
+                $foto = $request['media'];
             }
             //dd($request->all());
             Productos::where('id',$request['id'])->update([

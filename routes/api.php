@@ -27,7 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/sucursales', [SucursalController::class, 'apiSucursales']);
 Route::get('/productos/{negocio}', [ProductosController::class, 'apiProductos']);
-Route::get('/combos', [CombosController::class, 'combosApi']);
+Route::get('/combos/{menu}', [CombosController::class, 'combosApi']);
+Route::get('/combos', [CombosController::class, 'combosApiAll']);
 Route::get('/combos/{negocio}', [CombosController::class, 'combosApiId']);
 Route::post('/usuarios', [UsuariosController::class, 'apiUsuarios']);
 Route::post('/pedidos', [PedidoController::class, 'apiPedidos']);

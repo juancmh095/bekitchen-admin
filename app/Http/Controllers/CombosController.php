@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Combos;
 use App\Models\CombosProductos;
+use App\Models\Menus;
+use App\Models\MenusCombos;
 use App\Models\Productos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -217,10 +219,31 @@ class CombosController extends Controller
         return back();
     }
 
-    public function combosApi()
+    public function combosApiAll()
+    {
+        $data = Combos::all();
+        foreach($data as $item){
+            $pc = CombosProductos::where('id_combo',$item->id)->get();
+            foreach($pc as $p){
+                $pd = Productos::find($p->id_producto);
+                $p->producto = $pd;
+            }
+            $item->productos = $pc;
+        }
+        return $data;
+    }
+
+    public function combosApi($menu)
     {
         //
-        $data = Combos::all();
+        $mCombos = MenusCombos::where('id_menu',$menu)->get();
+        $data = array();
+        foreach ($mCombos as $c) {
+            # code...
+            $combo = Combos::Find($c->id_combo);
+            array_push($data,$combo);
+        }
+
         foreach($data as $item){
             $pc = CombosProductos::where('id_combo',$item->id)->get();
             foreach($pc as $p){

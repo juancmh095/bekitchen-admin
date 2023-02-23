@@ -73,6 +73,7 @@
                     <button type="button" class="js-file-attach-reset-img btn btn-white">Delete</button>
                   </div>
                 </div>
+                <input type="hidden" value="{{$producto->media}}" name="media">
                 <!-- End Form -->
                 <!-- Form -->
                 <div class="mb-4">
@@ -110,10 +111,11 @@
                                       "hideSearch": true,
                                       "dropdownWidth": "6rem"
                                     }' required>
-                              <option value="lb">lb</option>
-                              <option value="oz">oz</option>
-                              <option value="kg" selected>kg</option>
-                              <option value="g">g</option>
+                                    <option value="lb">lb</option>
+                                    <option value="oz">oz</option>
+                                    <option value="kg">kg</option>
+                                    <option value="g">g</option>
+                                    <option value="Pz" selected>Pz</option>
                             </select>
                           </div>
                           <!-- End Select -->

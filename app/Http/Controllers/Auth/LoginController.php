@@ -34,7 +34,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/sucursales';
+    protected $redirectTo = '/pedidos';
 
     /**
      * Create a new controller instance.
@@ -55,7 +55,7 @@ class LoginController extends Controller
             Session(['usuario'=>$user]);
             Auth::login($user);
             //dd('aqui');
-            return redirect('/sucursales');
+            return redirect('/pedidos');
         } else {
 
             return redirect('login');
