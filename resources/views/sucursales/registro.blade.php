@@ -238,7 +238,7 @@
                 <div class="card card-lg">
                   <!-- Header -->
                   <div class="card-header">
-                    <h4 class="card-header-title">Direccion y contacto</h4>
+                    <h4 class="card-header-title">Dirección y contacto</h4>
                   </div>
                   <!-- End Header -->
       

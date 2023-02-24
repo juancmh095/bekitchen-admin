@@ -115,4 +115,13 @@ class NegocioController extends Controller
     {
         //
     }
+
+    public function negocioApi($id)
+    {
+        //
+
+        $negocio = Negocio::find($id);
+
+        return $negocio;
+    }
 }

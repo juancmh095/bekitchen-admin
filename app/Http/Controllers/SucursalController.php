@@ -143,7 +143,6 @@ class SucursalController extends Controller
                 'direccion'=>$request['direccion'], 
                 'telefono'=>$request['telefono'], 
                 'correo'=>$request['correo'], 
-                'menu'=>0,
                 'lat'=>$request['lat'], 
                 'lng'=>$request['lng'], 
                 'delivery'=>isset($request['delivery']), 

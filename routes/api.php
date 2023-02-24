@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CombosController;
 use App\Http\Controllers\CuponesController;
+use App\Http\Controllers\NegocioController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\SucursalController;
@@ -34,6 +35,7 @@ Route::post('/usuarios', [UsuariosController::class, 'apiUsuarios']);
 Route::post('/pedidos', [PedidoController::class, 'apiPedidos']);
 Route::get('/pedidos/{id}', [PedidoController::class, 'getPedidos']);
 Route::get('/cupones/{id}', [CuponesController::class, 'getCupon']);
+Route::get('/negocio/{id}', [NegocioController::class, 'negocioApi']);
 Route::get('/cupones', [CuponesController::class, 'getCuponList']);
 
 Route::post('/login', [UsuariosController::class, 'apiLogin']);
