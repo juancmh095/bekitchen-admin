@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedidos;
+use App\Models\Sucursal;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -130,6 +131,15 @@ class PedidoController extends Controller
             $pedidos = Pedidos::where('id_usuario',$id)->where('status','!=',4)->get();
             $todos = Pedidos::where('id_usuario',$id)->where('status',4)->get();
 
+            foreach ($pedidos as $x) {
+                # code...
+                $x->tienda = Sucursal::find($x->tienda);
+            }
+
+            foreach ($todos as $x) {
+                # code...
+                $x->tienda = Sucursal::find($x->tienda);
+            }
             return ['activos'=>$pedidos,'todos'=>$todos];   
         } catch (\Throwable $th) {
             //throw $th;

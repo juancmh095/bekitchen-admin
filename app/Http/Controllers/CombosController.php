@@ -7,6 +7,7 @@ use App\Models\CombosProductos;
 use App\Models\Menus;
 use App\Models\MenusCombos;
 use App\Models\Productos;
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -223,11 +224,24 @@ class CombosController extends Controller
     {
         $data = Combos::all();
         foreach($data as $item){
+            $sucursales = array();
+            $sucCombos = MenusCombos::where('id_combo',$item->id)->get();
+            foreach ($sucCombos as $x) {
+                # code...
+                $suc = Sucursal::where('menu',$x->id_menu)->get();
+                foreach ($suc as $y) {
+                    # code...
+                    if(!in_array($y->nombre,$sucursales)){
+                        array_push($sucursales,$y->nombre);
+                    }
+                }
+            }
             $pc = CombosProductos::where('id_combo',$item->id)->get();
             foreach($pc as $p){
                 $pd = Productos::find($p->id_producto);
                 $p->producto = $pd;
             }
+            $item->sucursales = $sucursales;
             $item->productos = $pc;
         }
         return $data;
