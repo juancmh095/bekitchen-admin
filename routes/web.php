@@ -42,6 +42,7 @@ Route::get('/registro/usuario', function () {
     return view('registro.usuario',["success"=>0]);
 });
 
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('registro/usuario',[UsuariosController::class, 'create'])->name('registroNegocio');
 
 Auth::routes();
@@ -49,9 +50,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     /* NEGOCIO ADMINISTRACION  */
     /* SUCURSALES */
-    Route::get('/home', function () {
-        return view('index');
-    })->name('home');
+   
     Route::get('/sucursales/registro', [SucursalController::class, 'index']);
     Route::post('/sucursales/registro', [SucursalController::class, 'create'])->name('registroSucursal');
     Route::post('/sucursales/update', [SucursalController::class, 'update'])->name('updateSucursal');
@@ -105,7 +104,10 @@ Route::group(['middleware' => ['auth']], function () {
     /* USUARIOS */
     Route::get('/usuarios/registro', [UsuariosController::class, 'store']);
     Route::post('/usuarios/registro', [UsuariosController::class, 'created'])->name('registrarUsuario');
+    Route::post('/usuarios/update', [UsuariosController::class, 'update'])->name('updateUsuario');
     Route::get('/usuarios', [UsuariosController::class, 'index']);
+    Route::get('/usuarios/edit', [UsuariosController::class, 'edit'])->name('editUser');
+    Route::get('/usuarios/delete', [UsuariosController::class, 'delete'])->name('deleteUser');
     /* PEDIDOS */
     Route::get('/pedidos', [PedidoController::class, 'index'])->name('/pedidos');
     Route::get('/pedidos/update', [PedidoController::class, 'update'])->name('updatePedido');

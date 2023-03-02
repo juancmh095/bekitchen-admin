@@ -25,6 +25,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+    
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+ 
+    return $status === Password::RESET_LINK_SENT
+    ? ['error' => false,"text"=> __($status), "msg"=>'Correo Enviado']
+    : ['error' => true,"text"=> __($status), "msg"=>'Correo No Enviado'];
+})->middleware('guest');
+
 
 Route::get('/sucursales', [SucursalController::class, 'apiSucursales']);
 Route::get('/productos/{negocio}', [ProductosController::class, 'apiProductos']);
@@ -39,3 +51,4 @@ Route::get('/negocio/{id}', [NegocioController::class, 'negocioApi']);
 Route::get('/cupones', [CuponesController::class, 'getCuponList']);
 
 Route::post('/login', [UsuariosController::class, 'apiLogin']);
+Route::get('/send/mail', [UsuariosController::class, 'sendMailApi']);

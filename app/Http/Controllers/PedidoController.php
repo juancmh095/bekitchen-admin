@@ -7,6 +7,8 @@ use App\Models\Sucursal;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Stripe;
+
 class PedidoController extends Controller
 {
     /**
@@ -97,6 +99,18 @@ class PedidoController extends Controller
     {
         //
         try {
+
+            
+
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    
+            Stripe\Charge::create ([
+                    "amount" => $request['total'] * 100,
+                    "currency" => "mxn",
+                    "source" => $request['stripeToken'],
+                    "description" => "BEKITCHEN PAGO SERVICIOS" 
+            ]);
+
             //code...
             $date = now();
             $date = $date->format('Y-m-d');
@@ -118,7 +132,7 @@ class PedidoController extends Controller
             return ['msg'=>'pedido registrado','error'=>false];
         } catch (\Throwable $th) {
             //throw $th;
-            //return $th;
+            return $th;
             return ['msg'=>$th,'error'=>true];
         }
     }

@@ -77,6 +77,7 @@
                      }'>
                 <thead class="thead-light">
                   <tr>
+                    <th># pedido</th>
                     <th class="table-column-ps-0">Nombre</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
@@ -91,6 +92,7 @@
                 <tbody>
                   @foreach($pedidos as $pedido)
                   <tr>
+                    <td>{{$pedido->id + 150}}</td>
                     <td class="table-column-ps-0">
                       <a class="d-flex align-items-center">
                         <div class="flex-grow-1 ms-3">

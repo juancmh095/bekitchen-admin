@@ -256,14 +256,14 @@
                         </div>
                       </td>
                       <td class="table-column-ps-0">
-                        <a class="d-flex align-items-center" href="./ecommerce-customer-details.html">
+                        <a class="d-flex align-items-center" href="{{route('editUser',['id'=>$item->id])}}">
                           <div class="flex-shrink-0">
                             <div class="avatar avatar-circle">
                               <img class="avatar-img" src="{{asset('storage/'.$item->foto)}}" alt="Image Description">
                             </div>
                           </div>
                           <div class="flex-grow-1 ms-3">
-                            <span class="h5 text-inherit">{{$item->foto}} <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                            <span class="h5 text-inherit">{{$item->nombre}} <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
                           </div>
                         </a>
                       </td>

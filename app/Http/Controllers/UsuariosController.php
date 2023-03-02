@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\Mailer;
 use App\Models\User;
 use App\Models\Negocio;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
+
+use Mail;
+
 
 class UsuariosController extends Controller
 {
@@ -147,9 +152,19 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+        $user = User::find($request['id']);
+        return view('usuarios.editar',['usuario'=>$user]);
+    }
+
+    public function delete(Request $request)
+    {
+        //
+        User::where('id',$request['id'])->delete();
+        $usuarios = User::where('id_negocio',$request->user()->id_negocio)->get();
+        return view('usuarios.listado',['usuarios'=>$usuarios]);
     }
 
     /**
@@ -159,9 +174,46 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        //
+        try {
+            //registrar usuario admin y negocio
+            $idNegocio = 0;
+            $foto = "";
+            $passwordRdn = "";
+            if($request->file('foto')!=null){
+                //obtenemos el campo file definido en el formulario
+                $file = $request->file('foto');
+                //indicamos que queremos guardar un nuevo archivo en el disco local
+                $foto = Storage::disk('public')->put('fotos', $file);
+            }else{
+                $foto = $request['media'];
+            }
+            User::find($request['id'])->update(
+                [
+                    'nombre'=>$request['nombre'], 
+                    'ap_paterno'=>$request['ap'], 
+                    'ap_materno'=>$request['am'], 
+                    'telefono'=>$request['telefono'], 
+                    'direccion'=>$request['direccion'], 
+                    'tipo'=>$request['tipo'], 
+                    'foto'=>$foto, 
+                    'id_negocio'=>$request->user()->id_negocio, 
+                    'email'=>$request['correo'], 
+                    'password'=>$request['password']
+                ]
+            );
+
+            $usuarios = User::where('id_negocio',$request->user()->id_negocio)->get();
+        return view('usuarios.listado',['usuarios'=>$usuarios]);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            $usuarios = User::where('id_negocio',$request->user()->id_negocio)->get();
+            return view('usuarios.listado',['usuarios'=>$usuarios]);
+        }
     }
 
     /**
@@ -178,20 +230,25 @@ class UsuariosController extends Controller
     public function apiUsuarios(Request $request){
         try {
             //code...
-            User::create(
-                [
-                    'nombre'=>$request['nombre'], 
-                    'ap_paterno'=>$request['apellidop'], 
-                    'ap_materno'=>$request['apellidom'], 
-                    'telefono'=>$request['phone'], 
-                    'direccion'=>'N/A', 
-                    'tipo'=>'cliente', 
-                    'foto'=>'N/A', 
-                    'id_negocio'=>0, 
-                    'email'=>$request['email'], 
-                    'password'=>$request['password']
-                ]
-            );
+            $usuario = User::where('email',$request['email'])->get();
+            if(count($usuario)>0){
+                return ['ok'=>false,'text'=>'Error!!, Usuario registrado anteriormente'];
+            }else{
+                User::create(
+                    [
+                        'nombre'=>$request['nombre'], 
+                        'ap_paterno'=>$request['apellidop'], 
+                        'ap_materno'=>$request['apellidom'], 
+                        'telefono'=>$request['phone'], 
+                        'direccion'=>'N/A', 
+                        'tipo'=>'cliente', 
+                        'foto'=>'N/A', 
+                        'id_negocio'=>0, 
+                        'email'=>$request['email'], 
+                        'password'=>$request['password']
+                    ]
+                );
+            }
             return ['ok'=>true,'text'=>''];
         } catch (\Throwable $th) {
             //throw $th;
@@ -200,13 +257,33 @@ class UsuariosController extends Controller
     }
 
     public function apiLogin(Request $request){
-        $usuario = User::where('email','=',$request['email'])->where('password','=',$request['password'])->where('tipo','=','cliente')->get();
+        $usuario = User::where('email','=',$request['email'])->where('tipo','=','cliente')->get();
+        if($usuario){
+            if(count($usuario) > 0){
+                if($usuario[0]['password'] == $request['password']){
+                    return ['ok'=>true,'data'=>$usuario[0]];
+                }else{
+                    return ['ok'=>false,'data'=>array(),'text'=>'Contraseña Incorrecta'];
 
-        if(count($usuario) > 0){
-            return ['ok'=>true,'data'=>$usuario[0]];
+                }
+            }else{
+                return ['ok'=>false,'data'=>array(),'text'=>'Email No registrado'];
+    
+            }
         }else{
-            return ['ok'=>false,'data'=>array()];
-
+            return ['ok'=>false,'data'=>array(), 'text'=>'Email No registrado'];
         }
+    }
+
+
+    public function sendMailApi(){
+        $mailData = [
+            'title' => 'Mail from Web-tuts.com',
+            'body' => 'This is for testing email using smtp.'
+        ];
+         
+        Mail::to('juancarlosmh095@gmail.com')->send(new Mailer($mailData));
+           
+        dd("Email is sent successfully.");
     }
 }
