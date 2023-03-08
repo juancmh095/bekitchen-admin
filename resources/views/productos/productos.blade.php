@@ -18,12 +18,7 @@
               <h1 class="page-header-title">Productos <span class="badge bg-soft-dark text-dark ms-2">{{count($productos)}}</span></h1>
   
               <div class="mt-2">
-                <a class="text-body me-3" href="javascript:;" data-bs-toggle="modal" data-bs-target="#exportProductsModal">
-                  <i class="bi-download me-1"></i> Export
-                </a>
-                <a class="text-body" href="javascript:;" data-bs-toggle="modal" data-bs-target="#importProductsModal">
-                  <i class="bi-upload me-1"></i> Import
-                </a>
+                
               </div>
             </div>
             <!-- End Col -->
@@ -100,132 +95,7 @@
   
         <!-- Card -->
         <div class="card">
-          <!-- Header -->
-          <div class="card-header card-header-content-md-between">
-            <div class="mb-2 mb-md-0">
-              <form>
-                <!-- Search -->
-                <div class="input-group input-group-merge input-group-flush">
-                  <div class="input-group-prepend input-group-text">
-                    <i class="bi-search"></i>
-                  </div>
-                  <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
-                </div>
-                <!-- End Search -->
-              </form>
-            </div>
-  
-            <div class="d-grid d-sm-flex gap-2">
-              <button class="btn btn-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceProductFilter" aria-controls="offcanvasEcommerceProductFilter">
-                <i class="bi-filter me-1"></i> Filters
-              </button>
-  
-              <!-- Dropdown -->
-              <div class="dropdown">
-                <button type="button" class="btn btn-white w-100" id="showHideDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <i class="bi-table me-1"></i> Columns <span class="badge bg-soft-dark text-dark rounded-circle ms-1">6</span>
-                </button>
-  
-                <div class="dropdown-menu dropdown-menu-end dropdown-card" aria-labelledby="showHideDropdown" style="width: 15rem;">
-                  <div class="card card-sm">
-                    <div class="card-body">
-                      <div class="d-grid gap-3">
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_product">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">Product</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_product" checked>
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-  
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_type">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">Type</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_type" checked>
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-  
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_vendor">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">Vendor</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_vendor">
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-  
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_stocks">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">Stocks</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_stocks" checked>
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-  
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_sku">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">SKU</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_sku" checked>
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-  
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_price">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">Price</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_price" checked>
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-  
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_quantity">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">Quantity</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_quantity">
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-  
-                        <!-- Form Switch -->
-                        <label class="row form-check form-switch" for="toggleColumn_variants">
-                          <span class="col-8 col-sm-9 ms-0">
-                            <span class="me-2">Variants</span>
-                          </span>
-                          <span class="col-4 col-sm-3 text-end">
-                            <input type="checkbox" class="form-check-input" id="toggleColumn_variants" checked>
-                          </span>
-                        </label>
-                        <!-- End Form Switch -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End Dropdown -->
-            </div>
-          </div>
-          <!-- End Header -->
+          
   
           <!-- Table -->
           <div class="table-responsive datatable-custom">
@@ -248,14 +118,7 @@
                    }'>
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="table-column-pe-0">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                      <label class="form-check-label">
-                      </label>
-                    </div>
-                  </th>
-                  <th class="table-column-ps-0">Product</th>
+                  <th>Product</th>
                   <th>Categoria</th>
                   <th>Descripcion</th>
                   <th>Activo</th>
@@ -268,13 +131,7 @@
               <tbody>
                 @forEach($productos as $item)
                   <tr>
-                    <td class="table-column-pe-0">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
-                        <label class="form-check-label" for="datatableCheckAll1"></label>
-                      </div>
-                    </td>
-                    <td class="table-column-ps-0">
+                    <td>
                       <a class="d-flex align-items-center" href="#">
                         <div class="flex-shrink-0">
                           @if($item->media == "")

@@ -81,6 +81,7 @@
                     <th class="table-column-ps-0">Nombre</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
+                    <th>Fecha y Hora</th>
                     <th>Estatus</th>
                     <th>T. Entrega</th>
                     <th>Productos</th>
@@ -96,12 +97,13 @@
                     <td class="table-column-ps-0">
                       <a class="d-flex align-items-center">
                         <div class="flex-grow-1 ms-3">
-                          <span class="h5 text-inherit">{{$pedido->usuario->nombre}} <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                          <span class="h5 text-inherit">{{$pedido->usuario->nombre}}</span>
                         </div>
                       </a>
                     </td>
-                    <td>{{$pedido->usuario->telefono}}</td>
-                    <td>{{$pedido->direccion->destino->direccion}}</td>
+                    <td>{{isset($pedido->usuario)?$pedido->usuario->telefono:'N/A'}}</td>
+                    <td>{{isset($pedido->direccion->destino->direccion)?$pedido->direccion->destino->direccion:'N/A'}}</td>
+                    <td>{{$pedido->created_at}}</td>
                     <td>
                       @if($pedido->status === 0)
                         <span class="badge text-bg-warning">Pendiente</span>

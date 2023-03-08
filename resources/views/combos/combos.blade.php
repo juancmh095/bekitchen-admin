@@ -15,15 +15,10 @@
         <div class="page-header">
           <div class="row align-items-center mb-3">
             <div class="col-sm mb-2 mb-sm-0">
-              <h1 class="page-header-title">Combos <span class="badge bg-soft-dark text-dark ms-2">72,031</span></h1>
+              <h1 class="page-header-title">Combos <span class="badge bg-soft-dark text-dark ms-2">{{count($combos)}}</span></h1>
   
               <div class="mt-2">
-                <a class="text-body me-3" href="javascript:;" data-bs-toggle="modal" data-bs-target="#exportProductsModal">
-                  <i class="bi-download me-1"></i> Export
-                </a>
-                <a class="text-body" href="javascript:;" data-bs-toggle="modal" data-bs-target="#importProductsModal">
-                  <i class="bi-upload me-1"></i> Import
-                </a>
+                
               </div>
             </div>
             <!-- End Col -->
@@ -54,12 +49,6 @@
               <li class="nav-item">
                 <a class="nav-link active" href="#">Todos</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Inactivos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Expirados</a>
-              </li>
             </ul>
             <!-- End Nav -->
           </div>
@@ -69,28 +58,7 @@
   
         <div class="row justify-content-end mb-3">
           <div class="col-lg">
-            <!-- Datatable Info -->
-            <div id="datatableCounterInfo" style="display: none;">
-              <div class="d-sm-flex justify-content-lg-end align-items-sm-center">
-                <span class="d-block d-sm-inline-block fs-5 me-3 mb-2 mb-sm-0">
-                  <span id="datatableCounter">0</span>
-                  Selected
-                </span>
-                <a class="btn btn-outline-danger btn-sm mb-2 mb-sm-0 me-2" href="javascript:;">
-                  <i class="bi-trash"></i> Delete
-                </a>
-                <a class="btn btn-white btn-sm mb-2 mb-sm-0 me-2" href="javascript:;">
-                  <i class="bi-archive"></i> Archive
-                </a>
-                <a class="btn btn-white btn-sm mb-2 mb-sm-0 me-2" href="javascript:;">
-                  <i class="bi-upload"></i> Publish
-                </a>
-                <a class="btn btn-white btn-sm mb-2 mb-sm-0" href="javascript:;">
-                  <i class="bi-x-lg"></i> Unpublish
-                </a>
-              </div>
-            </div>
-            <!-- End Datatable Info -->
+            
           </div>
         </div>
         <!-- End Row -->
@@ -101,14 +69,6 @@
           <div class="card-header card-header-content-md-between">
             <div class="mb-2 mb-md-0">
               <form>
-                <!-- Search -->
-                <div class="input-group input-group-merge input-group-flush">
-                  <div class="input-group-prepend input-group-text">
-                    <i class="bi-search"></i>
-                  </div>
-                  <input id="datatableSearch" type="search" class="form-control" placeholder="Buscar" aria-label="Search users">
-                </div>
-                <!-- End Search -->
               </form>
             </div>
           </div>
@@ -135,14 +95,7 @@
                    }'>
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="table-column-pe-0">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                      <label class="form-check-label">
-                      </label>
-                    </div>
-                  </th>
-                  <th class="table-column-ps-0">Combos</th>
+                  <th>Combos</th>
                   <th>Fecha de expiracion</th>
                   <th>Activo</th>
                   <th>Registrado</th>
@@ -153,13 +106,7 @@
               <tbody>
                 @foreach($combos as $item)
                 <tr>
-                  <td class="table-column-pe-0">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
-                      <label class="form-check-label" for="datatableCheckAll1"></label>
-                    </div>
-                  </td>
-                  <td class="table-column-ps-0">
+                  <td>
                     <a class="d-flex align-items-center" href="{{route('editarCombo',['id'=>$item->id])}}">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-lg" src="{{asset('storage/'.$item->banner)}}" alt="Image Description">

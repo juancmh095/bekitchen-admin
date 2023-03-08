@@ -54,8 +54,8 @@ class ProductosController extends Controller
                 'top'=>isset($request['top'])?1:0,
                 'mas_comprados'=>isset($request['mas_comprados'])?1:0,
             ]);
-
-            return view('productos.registro',["success"=>1]);
+            $categorias = Categoria::where('id_negocio',$request->user()->id_negocio)->get();
+            return view('productos.registro',["success"=>1,"categorias"=>$categorias]);
         } catch (\Throwable $th) {
             //throw $th;
             dd($th);

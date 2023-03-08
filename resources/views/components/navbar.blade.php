@@ -25,14 +25,7 @@
         <!-- Content -->
         <div class="navbar-vertical-content">
           <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
-            <!-- Collapse -->
-            <div class="nav-item">
-              <a class="nav-link " href="/" data-placement="left">
-                <i class="bi-house-door nav-icon"></i>
-                <span class="nav-link-title">Inicio</span>
-              </a>
-            </div>
-            <!-- End Collapse -->
+            
 
             <span class="dropdown-header mt-4">Administracion</span>
             <small class="bi-three-dots nav-subtitle-replacer"></small>

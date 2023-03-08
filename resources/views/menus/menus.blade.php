@@ -15,15 +15,10 @@
         <div class="page-header">
           <div class="row align-items-center mb-3">
             <div class="col-sm mb-2 mb-sm-0">
-              <h1 class="page-header-title">Menus <span class="badge bg-soft-dark text-dark ms-2">72,031</span></h1>
+              <h1 class="page-header-title">Menus <span class="badge bg-soft-dark text-dark ms-2">{{count($menus)}}</span></h1>
   
               <div class="mt-2">
-                <a class="text-body me-3" href="javascript:;" data-bs-toggle="modal" data-bs-target="#exportProductsModal">
-                  <i class="bi-download me-1"></i> Export
-                </a>
-                <a class="text-body" href="javascript:;" data-bs-toggle="modal" data-bs-target="#importProductsModal">
-                  <i class="bi-upload me-1"></i> Import
-                </a>
+                
               </div>
             </div>
             <!-- End Col -->
@@ -98,14 +93,6 @@
           <div class="card-header card-header-content-md-between">
             <div class="mb-2 mb-md-0">
               <form>
-                <!-- Search -->
-                <div class="input-group input-group-merge input-group-flush">
-                  <div class="input-group-prepend input-group-text">
-                    <i class="bi-search"></i>
-                  </div>
-                  <input id="datatableSearch" type="search" class="form-control" placeholder="Buscar" aria-label="Search users">
-                </div>
-                <!-- End Search -->
               </form>
             </div>
           </div>
@@ -132,14 +119,7 @@
                    }'>
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="table-column-pe-0">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                      <label class="form-check-label">
-                      </label>
-                    </div>
-                  </th>
-                  <th class="table-column-ps-0">Menu</th>
+                  <th class="">Menu</th>
                   <th>Activo</th>
                   <th>Registrado</th>
                   <th>Accciones</th>
@@ -149,13 +129,7 @@
               <tbody>
                 @forEach($menus as $menu)
                 <tr>
-                  <td class="table-column-pe-0">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
-                      <label class="form-check-label" for="datatableCheckAll1"></label>
-                    </div>
-                  </td>
-                  <td class="table-column-ps-0">
+                  <td class="">
                     <a class="d-flex align-items-center" href="{{route('editarMenu',['id'=>$menu->id])}}">
                       <div class="flex-shrink-0">
                         <img class="avatar avatar-lg" src="{{asset('static/img/logobk.jpeg')}}" alt="Image Description">

@@ -25,7 +25,7 @@
                   </ol>
                 </nav>
     
-                <h1 class="page-header-title">Registro de nueva sucursal</h1>
+                <h1 class="page-header-title">Registro de nuevo usuario</h1>
               </div>
               <!-- End Col -->
             </div>
@@ -162,7 +162,7 @@
                         <div class="input-group-prepend input-group-text">
                           <i class="bi-phone"></i>
                         </div>
-                        <input type="phone" class="form-control" name="telefono" id="nameSucursal" placeholder="Ingrese el nombre" aria-label="Enter project name here">
+                        <input type="phone" class="form-control" name="telefono" id="nameSucursal" maxlength="10" placeholder="Ingrese el nombre" aria-label="Enter project name here">
                       </div>
                     </div>
                     <!-- End Form -->

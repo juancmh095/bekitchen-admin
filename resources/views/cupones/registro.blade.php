@@ -60,14 +60,7 @@
                 }'>
             <thead class="thead-light">
               <tr>
-                <th scope="col" class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                    <label class="form-check-label">
-                    </label>
-                  </div>
-                </th>
-                <th class="table-column-ps-0">Codigo</th>
+                <th>Codigo</th>
                 <th>Importe Min.</th>
                 <th>Activo</th>
                 <th>Porcentaje</th>
@@ -80,13 +73,7 @@
             <tbody>
               @foreach($cupones as $item)
               <tr>
-                <td class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
-                    <label class="form-check-label" for="datatableCheckAll1"></label>
-                  </div>
-                </td>
-                <td class="table-column-ps-0">
+                <td>
                   <a class="d-flex align-items-center" href="#">
                     <div class="flex-grow-1 ms-3">
                       <h5 class="text-inherit mb-0">{{$item->codigo}}</h5>
@@ -153,7 +140,7 @@
           @csrf
           <div class="modal-body">
             <label for="codigo" class="visually-hidden form-label">Nombre</label>
-            <textarea id="codigo" class="form-control form-control-title" name="nombre" placeholder="Agregar Codigo"></textarea>
+            <textarea id="codigo" class="form-control form-control-title" name="nombre" placeholder="Agregar Codigo" required></textarea>
   
             <input type="hidden" id="id" name="id" value="0">
             

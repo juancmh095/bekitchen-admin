@@ -60,13 +60,6 @@
                 }'>
             <thead class="thead-light">
               <tr>
-                <th scope="col" class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                    <label class="form-check-label">
-                    </label>
-                  </div>
-                </th>
                 <th class="table-column-ps-0">Categoria</th>
                 <th>Acciones</th>
               </tr>
@@ -75,12 +68,6 @@
             <tbody>
               @foreach($categorias as $item)
               <tr>
-                <td class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
-                    <label class="form-check-label" for="datatableCheckAll1"></label>
-                  </div>
-                </td>
                 <td class="table-column-ps-0">
                   <a class="d-flex align-items-center" href="#">
                     <div class="flex-grow-1 ms-3">

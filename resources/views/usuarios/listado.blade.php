@@ -79,14 +79,6 @@
             <div class="card-header card-header-content-sm-between">
               <div class="mb-2 mb-sm-0">
                 <form>
-                  <!-- Search -->
-                  <div class="input-group input-group-merge input-group-flush">
-                    <div class="input-group-prepend input-group-text">
-                      <i class="bi-search"></i>
-                    </div>
-                    <input id="datatableSearch" type="search" class="form-control" placeholder="Search orders" aria-label="Search orders">
-                  </div>
-                  <!-- End Search -->
                 </form>
               </div>
     
@@ -94,120 +86,12 @@
                 <!-- Datatable Info -->
                 <div id="datatableCounterInfo" style="display: none;">
                   <div class="d-flex align-items-center">
-                    <span class="fs-5 me-3">
-                      <span id="datatableCounter">0</span>
-                      Selected
-                    </span>
-                    <a class="btn btn-outline-danger btn-sm" href="javascript:;">
-                      <i class="bi-trash"></i> Delete
-                    </a>
+                    
                   </div>
                 </div>
                 <!-- End Datatable Info -->
     
-                <!-- Dropdown -->
-                <div class="dropdown">
-                  <button type="button" class="btn btn-white w-100" id="showHideDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                    <i class="bi-table me-1"></i> Columns <span class="badge bg-soft-dark text-dark rounded-circle ms-1">5</span>
-                  </button>
-    
-                  <div class="dropdown-menu dropdown-menu-end dropdown-card" aria-labelledby="showHideDropdown" style="width: 15rem;">
-                    <div class="card card-sm">
-                      <div class="card-body">
-                        <div class="d-grid gap-3">
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_name">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">Name</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_name" checked>
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-    
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_email">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">E-mail</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_email" checked>
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-    
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_phone">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">Phone</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_phone">
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-    
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_country">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">Country</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_country" checked>
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-    
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_account_status">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">Account status</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_account_status">
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-    
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_orders">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">Orders</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_orders" checked>
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-    
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_total_spent">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">Total spent</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_total_spent" checked>
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-    
-                          <!-- Form Switch -->
-                          <label class="row form-check form-switch" for="toggleColumn_last_activity">
-                            <span class="col-8 col-sm-9 ms-0">
-                              <span class="me-2">Last activity</span>
-                            </span>
-                            <span class="col-4 col-sm-3 text-end">
-                              <input type="checkbox" class="form-check-input" id="toggleColumn_last_activity">
-                            </span>
-                          </label>
-                          <!-- End Form Switch -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Dropdown -->
+                
               </div>
             </div>
             <!-- End Header -->
@@ -232,13 +116,7 @@
                      }'>
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col" class="table-column-pe-0">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                        <label class="form-check-label" for="datatableCheckAll"></label>
-                      </div>
-                    </th>
-                    <th class="table-column-ps-0">Nombre</th>
+                    <th class="">Nombre</th>
                     <th>Tipo</th>
                     <th>E-mail</th>
                     <th>Telefono</th>
@@ -249,13 +127,7 @@
                 <tbody>
                   @foreach($usuarios as $item)
                     <tr>
-                      <td class="table-column-pe-0">
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="usersDataCheck1">
-                          <label class="form-check-label" for="usersDataCheck1"></label>
-                        </div>
-                      </td>
-                      <td class="table-column-ps-0">
+                      <td class="">
                         <a class="d-flex align-items-center" href="{{route('editUser',['id'=>$item->id])}}">
                           <div class="flex-shrink-0">
                             <div class="avatar avatar-circle">
