@@ -19,7 +19,7 @@ class PedidoController extends Controller
     public function index()
     {
         //
-        $pedidos = Pedidos::all();
+        $pedidos = Pedidos::all()->sortDesc();
         foreach ($pedidos as $pedido) {
             # code...
             $pedido->productos = json_decode($pedido->productos);
@@ -84,7 +84,7 @@ class PedidoController extends Controller
     {
         //
         Pedidos::where('id',$request['id'])->update(['status'=>$request['status']]);
-        $pedidos = Pedidos::all();
+        $pedidos = Pedidos::all()->sortDesc();
         foreach ($pedidos as $pedido) {
             # code...
             $pedido->productos = json_decode($pedido->productos);
