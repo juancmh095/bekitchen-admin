@@ -194,6 +194,15 @@ class MenusController extends Controller
         return view('menus.menus',['menus'=>$menus]);
     }
 
+    public function updateStatus(Request $request){
+        Menus::find($request['id'])->update([
+            'status'=>$request['status']
+        ]);
+
+        $menus = Menus::all();
+        return back();
+    }
+
     public function deletePmenu(Request $request)
     {
         //

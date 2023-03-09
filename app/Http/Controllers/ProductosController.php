@@ -102,6 +102,15 @@ class ProductosController extends Controller
         return view('productos.editar',["success"=>0,"producto"=>$producto,"categorias"=>$categorias]);
     }
 
+    public function updateStatus(Request $request){
+        Productos::find($request['id'])->update([
+            'status'=>$request['status']
+        ]);
+
+
+        return back();
+    }
+
     /**
      * Update the specified resource in storage.
      *

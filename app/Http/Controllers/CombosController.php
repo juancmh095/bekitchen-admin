@@ -206,6 +206,14 @@ class CombosController extends Controller
         //
     }
 
+    public function updateStatus(Request $request){
+        Combos::find($request['id'])->update([
+            'status'=>$request['status']
+        ]);
+
+        return back();
+    }
+
     public function deleteProducto(Request $request)
     {
         //

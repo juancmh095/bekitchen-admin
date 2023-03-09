@@ -12,7 +12,7 @@ class Menus extends Model
     protected $table = 'menus';
 
     protected $fillable = [
-        'nombre', 'id_negocio'
+        'nombre', 'id_negocio','status'
     ];
 
     public function menus()

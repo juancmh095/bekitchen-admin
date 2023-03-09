@@ -95,9 +95,9 @@
                    }'>
               <thead class="thead-light">
                 <tr>
+                  <th>Activo</th>
                   <th>Combos</th>
                   <th>Fecha de expiracion</th>
-                  <th>Activo</th>
                   <th>Registrado</th>
                   <th>Actions</th>
                 </tr>
@@ -106,6 +106,26 @@
               <tbody>
                 @foreach($combos as $item)
                 <tr>
+                  <td>
+                    <div class="form-check form-switch">
+                      @if($item->status == 0)
+                      <form action="{{route('updateComboS')}}" id="form2" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$item->id}}">
+                        <input type="hidden" name="status" value="1">
+                        <input class="form-check-input" type="checkbox" id="stocksCheckbox1" value="{{$item->status}}" onchange="$('#form2').submit()">
+                      </form>
+                      @else
+                        <form action="{{route('updateComboS')}}" id="form1" method="POST">
+                          @csrf
+                          <input type="hidden" name="id" value="{{$item->id}}">
+                          <input type="hidden" name="status" value="0">
+                          <input class="form-check-input" type="checkbox" id="stocksCheckbox1" value="{{$item->status}}" checked onchange="$('#form1').submit()">
+                        </form>
+                      @endif
+                      <label class="form-check-label" for="stocksCheckbox1"></label>
+                    </div>
+                  </td>
                   <td>
                     <a class="d-flex align-items-center" href="{{route('editarCombo',['id'=>$item->id])}}">
                       <div class="flex-shrink-0">
@@ -117,12 +137,6 @@
                     </a>
                   </td>
                   <td>{{$item->fecha_exp}}</td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="stocksCheckbox1" checked>
-                      <label class="form-check-label" for="stocksCheckbox1"></label>
-                    </div>
-                  </td>
                   <td>{{$item->created_at}}</td>   
                   <td>
                     <div class="btn-group" role="group">

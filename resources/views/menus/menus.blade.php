@@ -141,7 +141,21 @@
                   </td>
                   <td>
                     <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="stocksCheckbox1" checked>
+                      @if($menu->status == 0)
+                      <form action="{{route('updateMenuS')}}" id="form2" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$menu->id}}">
+                        <input type="hidden" name="status" value="1">
+                        <input class="form-check-input" type="checkbox" id="stocksCheckbox1" value="{{$menu->status}}" onchange="$('#form2').submit()">
+                      </form>
+                      @else
+                        <form action="{{route('updateMenuS')}}" id="form1" method="POST">
+                          @csrf
+                          <input type="hidden" name="id" value="{{$menu->id}}">
+                          <input type="hidden" name="status" value="0">
+                          <input class="form-check-input" type="checkbox" id="stocksCheckbox1" value="{{$menu->status}}" checked onchange="$('#form1').submit()">
+                        </form>
+                      @endif
                       <label class="form-check-label" for="stocksCheckbox1"></label>
                     </div>
                   </td>

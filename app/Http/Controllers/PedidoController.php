@@ -142,8 +142,8 @@ class PedidoController extends Controller
         //
         try {
             //code...
-            $pedidos = Pedidos::where('id_usuario',$id)->where('status','!=',4)->get();
-            $todos = Pedidos::where('id_usuario',$id)->where('status',4)->get();
+            $pedidos = Pedidos::where('id_usuario',$id)->where('status','!=',4)->orderBy('id', 'desc')->get();
+            $todos = Pedidos::where('id_usuario',$id)->where('status',4)->orderBy('id', 'desc')->get();
 
             foreach ($pedidos as $x) {
                 # code...

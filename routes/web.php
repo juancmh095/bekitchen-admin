@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/productos/registro', [ProductosController::class,'create'])->name('registroProducto');
 
     Route::get('/producto', [ProductosController::class,'edit'])->name('/producto');
-
+    Route::post('/producto/status', [ProductosController::class,'updateStatus'])->name('updateProductoS');
     Route::post('/producto/update', [ProductosController::class,'update'])->name('editarProducto');
 
     Route::get('/categorias', [CategoriaController::class,'index']);
@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/menus/registro', [MenusController::class,'create'])->name('registroMenu');
     Route::get('/menus/editar', [MenusController::class,'edit'])->name('editarMenu');
     Route::post('/menus/update', [MenusController::class,'update'])->name('updateMenu');
+    Route::post('/menus/status', [MenusController::class,'updateStatus'])->name('updateMenuS');
     Route::get('/menus/dp', [MenusController::class,'deletePmenu'])->name('deleteProductoMenu');
     Route::get('/menus/dc', [MenusController::class,'deleteCmenu'])->name('deleteComboMenu');
     Route::get('/menus/delete', [MenusController::class,'deleteMenu'])->name('deleteMenu');
@@ -98,10 +99,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/combos/registro/update', [CombosController::class,'update'])->name('updateCombo');
     Route::post('/combos/registro/delete', [CombosController::class,'deleteCombo'])->name('eliminarCombo');
     Route::get('/combos/registro/dp', [CombosController::class,'deleteProducto'])->name('deleteProductoCombo');
+    Route::post('/combos/status', [CombosController::class,'updateStatus'])->name('updateComboS');
     /* CUPONES */
     Route::get('/cuponera', [CuponesController::class, 'index']);
     Route::post('/cuponera', [CuponesController::class, 'create'])->name('registroCupon');
     Route::get('/cupon/delete', [CuponesController::class,'deleteCupon'])->name('deleteCupon');
+    Route::post('/cupon/status', [CuponesController::class,'updateStatus'])->name('updateCuponS');
     /* USUARIOS */
     Route::get('/usuarios/registro', [UsuariosController::class, 'store']);
     Route::post('/usuarios/registro', [UsuariosController::class, 'created'])->name('registrarUsuario');

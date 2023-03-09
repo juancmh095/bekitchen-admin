@@ -12,7 +12,7 @@ class Combos extends Model
     protected $table = 'combos';
 
     protected $fillable = [
-        'nombre', 'banner', 'precio_total', 'fecha_exp'
+        'nombre', 'banner', 'precio_total', 'fecha_exp', 'status'
     ];
 
     public function combos()

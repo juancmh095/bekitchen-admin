@@ -93,6 +93,14 @@ class CuponesController extends Controller
         //
     }
 
+    public function updateStatus(Request $request){
+        Cupones::find($request['id'])->update([
+            'status'=>$request['status']
+        ]);
+
+        return back();
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -124,6 +132,8 @@ class CuponesController extends Controller
         //
         return Cupones::where('codigo',$id)->limit(1)->get();
     }
+
+
 
     /**
      * Remove the specified resource from storage.

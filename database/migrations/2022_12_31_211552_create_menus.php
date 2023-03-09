@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string("nombre");
             $table->integer('id_negocio');
+            $table->integer('status');
         });
     }
 
