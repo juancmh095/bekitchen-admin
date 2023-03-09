@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/sucursales/update', [SucursalController::class, 'update'])->name('updateSucursal');
     Route::get('/sucursales', [SucursalController::class, 'store']);
     Route::get('/sucursales/editar', [SucursalController::class, 'edit'])->name('editarSucursal');
+    Route::get('/sucursales/eliminar', [SucursalController::class, 'delete'])->name('eliminarSucursal');
     /* NEGOCIO */
     Route::get('/negocio/perfil', [NegocioController::class, 'edit']);
     Route::post('/negocio/perfil', [NegocioController::class, 'update'])->name('updateNegocio');

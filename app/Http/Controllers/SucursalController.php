@@ -178,6 +178,14 @@ class SucursalController extends Controller
         //
     }
 
+    public function delete(Request $request)
+    {
+        //
+        Sucursal::find($request['id'])->delete();
+        $sucursales = Sucursal::all();
+        return view('sucursales.listado',['sucursales'=>$sucursales]);
+    }
+
     public function apiSucursales(Request $request)
     {
         //

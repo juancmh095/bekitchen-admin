@@ -399,7 +399,7 @@
                   <input type="hidden" name="id" id="" value="{{$suc->id}}">
                   <!-- Footer -->
                   <div class="card-footer d-flex justify-content-end gap-3">
-                    <button type="reset" class="btn btn-white">Cancelar</button>
+                    <a type="button" class="btn btn-white"href="{{route('eliminarSucursal',['id'=>$suc->id])}}">Eliminar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                   </div>
                   <!-- End Footer -->
